@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Oasis Healthcare – Trusted medical services in Imphal, Manipur. Heal. Love. Care.">
+<title>Pharmacy | Oasis Healthcare</title>
+<link rel="icon" type="image/jpeg" href="oasis-healthcare-logo.jpeg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f8fc;
+  --off:#edf4fb;
+  --cream:#e7f0fa;
+  --border:#d7e3f0;
+  --border-dk:#b8cbe0;
+  --text:#142638;
+  --mid:#4f6478;
+  --muted:#7f93a8;
+  --green:#1E7EC8;
+  --green-lt:#eaf4fc;
+  --green-dk:#155f99;
+  --blue:#1E7EC8;
+  --red:#E31E2F;
+  --red-lt:#fdecef;
+  --red-dk:#b81826;
+  --wa:#25D366;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--border-dk);border-radius:2px}
+
+/* PAGE SYSTEM */
+.page{display:none}
+.page.active{display:block}
+
+/* ── TOP NAV ── */
+#tnav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:60px;
+  background:rgba(246,243,238,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 32px;
+}
+.tn-inner{width:100%;max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.tn-logo{display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none}
+.tn-icon{width:58px;height:44px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(30,126,200,.14);box-shadow:0 10px 24px rgba(20,38,56,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:2px 4px}.tn-icon img{width:100%;height:100%;object-fit:contain;display:block}
+.tn-name{font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1.05}
+.tn-name .bl{color:var(--blue)} .tn-name .rd{color:var(--red)}
+.tn-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:2px}
+.tn-links{display:flex;align-items:center;gap:28px;list-style:none}
+.tn-links a{font-size:13px;color:var(--mid);text-decoration:none;cursor:pointer;transition:color .2s}
+.tn-links a:hover{color:var(--text)}
+.tn-right{display:flex;align-items:center;gap:10px}
+.tn-call,.tn-book,.tn-patient,.tn-profile-btn,.tn-logout{min-height:46px}
+.tn-call,.tn-book,.tn-patient{display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;border-radius:999px;text-decoration:none;transition:all .22s ease;box-shadow:0 10px 24px rgba(20,38,56,.04)}
+.tn-call{color:var(--mid);border:1px solid var(--border-dk);background:rgba(255,255,255,.72);padding:0 18px}
+.tn-call:hover{color:var(--text);border-color:rgba(30,126,200,.28);background:#fff;transform:translateY(-1px)}
+.tn-book{color:#fff;background:var(--blue);padding:0 20px;border:none}
+.tn-book:hover{background:var(--green-dk);transform:translateY(-1px)}
+.tn-patient{color:var(--blue);background:rgba(237,245,253,.95);padding:0 18px;border:1px solid rgba(30,126,200,.18)}
+.tn-patient:hover{background:#dcecf8;transform:translateY(-1px)}
+.tn-profile-shell{display:flex;align-items:center;gap:10px}
+.tn-profile-btn{display:flex;align-items:center;gap:10px;min-width:176px;background:rgba(255,255,255,.88);border:1px solid rgba(30,126,200,.14);border-radius:999px;padding:6px 16px 6px 8px;cursor:pointer;transition:all .22s ease;box-shadow:0 12px 30px rgba(20,38,56,.05)}
+.tn-profile-btn:hover{transform:translateY(-1px);border-color:rgba(30,126,200,.26);background:#fff}
+.tn-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--green),#6fb4ea);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;box-shadow:0 8px 22px rgba(30,126,200,.18)}
+.tn-profile-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;line-height:1;margin-top:1px;min-width:0}
+.tn-profile-copy small{font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#7d8ea0;font-weight:700;margin-bottom:3px}
+.tn-profile-copy strong{font-size:14px;font-weight:700;color:var(--text);max-width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tn-logout{width:46px;height:46px;border-radius:999px;border:1px solid rgba(30,126,200,.14);background:rgba(255,255,255,.92);color:var(--mid);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .22s ease;box-shadow:0 10px 24px rgba(20,38,56,.04)}
+.tn-logout:hover{color:var(--text);border-color:rgba(30,126,200,.26);background:#fff;transform:translateY(-1px)}
+.ham{display:none;background:none;border:none;cursor:pointer;color:var(--text);font-size:20px;padding:4px}
+
+
+@media (max-width:1180px){.tn-right{gap:8px}.tn-call,.tn-book,.tn-patient{padding:0 15px}.tn-profile-btn{min-width:158px;padding-right:14px}.tn-profile-copy strong{max-width:88px}}
+
+/* MOBILE MENU */
+#mob{display:none;position:fixed;top:60px;left:0;right:0;z-index:199;background:var(--bg);border-bottom:1px solid var(--border);padding:16px 24px 24px}
+#mob a{display:block;font-size:17px;color:var(--mid);padding:13px 0;border-bottom:1px solid var(--border);text-decoration:none;cursor:pointer;transition:color .2s}
+#mob a:last-child{border:none;color:var(--green);font-weight:500}
+#mob a:hover{color:var(--text)}
+#mob .mob-accent{color:var(--green);font-weight:500}
+
+/* FLOATING BUTTONS */
+.fab-g{position:fixed;right:22px;bottom:26px;z-index:300;display:flex;flex-direction:column;gap:11px;align-items:center}
+.fab{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:19px;box-shadow:0 4px 18px rgba(0,0,0,.14);transition:all .25s var(--ease)}
+.fab:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 8px 28px rgba(0,0,0,.2)}
+.fab-wa{background:var(--wa)} .fab-ph{background:var(--green)}
+
+/* ── LEFT SIDENAV (Shopify-style) ── */
+#sidenav{
+  position:fixed;left:0;top:60px;bottom:0;z-index:100;
+  width:216px;padding:44px 0 44px 28px;
+  display:flex;flex-direction:column;gap:2px;overflow-y:auto;
+  border-right:1px solid var(--border);
+  background:var(--bg);
+}
+.sn-lbl{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 0 10px 12px;margin-bottom:2px}
+.sn-a{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:var(--muted);
+  padding:7px 12px;border-radius:8px;cursor:pointer;text-decoration:none;
+  transition:all .2s;white-space:nowrap;
+}
+.sn-a::before{content:'';width:3px;height:13px;border-radius:2px;background:transparent;flex-shrink:0;transition:background .2s}
+.sn-a:hover{color:var(--text);background:var(--off)}
+.sn-a.active{color:var(--text);font-weight:500;background:var(--green-lt)}
+.sn-a.active::before{background:var(--green)}
+.sn-i{font-size:12px;width:14px;text-align:center}
+
+/* ── MAIN CONTENT ── */
+#mc{margin-left:216px;padding-top:60px}
+
+/* ── REVEAL ANIMATIONS ── */
+.rv{opacity:0;transform:translateY(44px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-44px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv-l.in{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(44px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv-r.in{opacity:1;transform:none}
+.rv-u{opacity:0;transform:translateY(60px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv-u.in{opacity:1;transform:none}
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s} .d5{transition-delay:.5s}
+
+/* ── HERO ── */
+#s-hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:80px 64px 72px;position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero-glow{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:580px;height:580px;background:radial-gradient(circle,rgba(30,126,200,.07) 0%,transparent 68%);pointer-events:none}
+.hero-shell{
+  position:relative;min-height:560px;display:flex;align-items:center;
+  padding:48px 52px;border-radius:36px;overflow:hidden;margin-bottom:42px;
+  border:1px solid rgba(30,126,200,.14);
+  background:linear-gradient(135deg,rgba(255,250,244,.62),rgba(255,250,244,.18));
+  box-shadow:0 24px 70px rgba(22,34,30,.10);
+}
+.hero-shell::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,243,238,.985) 0%,rgba(246,243,238,.96) 34%,rgba(246,243,238,.86) 48%,rgba(246,243,238,.5) 62%,rgba(246,243,238,.14) 100%);z-index:1}
+.hero-shell::after{content:'';position:absolute;right:-24px;top:-30px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.18) 0%,rgba(30,126,200,.08) 36%,transparent 72%);pointer-events:none;z-index:1}
+.hero-photo-layer{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1800&auto=format&fit=crop&q=80') center center/cover no-repeat;opacity:0;transform:scale(1.09);filter:saturate(1.02) contrast(1.02);transition:opacity 1.05s var(--ease),transform 1.35s var(--ease);z-index:0}
+.hero-photo-layer.in{opacity:1;transform:scale(1.03)}
+@keyframes heroPhotoFloat{0%{transform:scale(1.03) translate3d(0,0,0)}100%{transform:scale(1.07) translate3d(-10px,-8px,0)}}
+.hero-photo-layer.in{animation:heroPhotoFloat 16s ease-in-out infinite alternate}
+.hero-copy{position:relative;z-index:2;max-width:min(640px,60%)}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1px solid rgba(30,126,200,.22);background:rgba(30,126,200,.08);padding:5px 14px;border-radius:100px;margin-bottom:36px;backdrop-filter:blur(8px)}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pdot 2.5s ease-in-out infinite}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero-title{font-family:var(--serif);font-size:clamp(58px,7.5vw,112px);line-height:1.0;letter-spacing:-0.03em;color:var(--text);margin-bottom:32px;font-weight:300}
+.hero-title em{font-style:italic;color:var(--blue)}
+/* word split */
+.sw{display:inline-block;opacity:0;transform:translateY(32px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.sw.in{opacity:1;transform:none}
+.hero-sub{font-size:18px;font-weight:300;color:var(--mid);line-height:1.75;max-width:560px;margin-bottom:42px;opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease) .45s,transform .7s var(--ease) .45s}
+.hero-sub.in{opacity:1;transform:none}
+.hero-acts{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:0;opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease) .6s,transform .6s var(--ease) .6s}
+.hero-acts.in{opacity:1;transform:none}
+.btn-grn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;color:#fff;background:var(--blue);padding:14px 28px;border-radius:100px;text-decoration:none;border:none;cursor:pointer;transition:all .25s var(--ease)}
+.btn-grn:hover{background:var(--green-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(30,126,200,.28)}
+.btn-out{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:400;color:var(--text);background:rgba(255,255,255,.42);padding:14px 28px;border-radius:100px;text-decoration:none;border:1.5px solid rgba(19,25,23,.16);cursor:pointer;transition:all .2s;backdrop-filter:blur(8px)}
+.btn-out:hover{border-color:var(--mid);background:rgba(255,255,255,.62)}
+.hero-info-card{position:absolute;right:32px;bottom:28px;width:min(350px,38%);padding:20px 22px;background:rgba(255,250,244,.82);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);border-radius:24px;box-shadow:0 16px 34px rgba(19,25,23,.10);z-index:2;opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease) .85s,transform .7s var(--ease) .85s}
+.hero-info-card.in{opacity:1;transform:none}
+.hero-info-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px}
+.hero-info-k{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.hero-info-v{font-size:21px;font-family:var(--serif);line-height:1.1;color:var(--text);letter-spacing:-.02em;margin-bottom:8px}
+.hero-info-t{font-size:13px;line-height:1.7;color:var(--mid)}
+.hero-info-icon{width:46px;height:46px;border-radius:16px;background:rgba(30,126,200,.10);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:18px;flex-shrink:0}
+.hero-info-row{display:flex;flex-wrap:wrap;gap:10px;padding-top:14px;border-top:1px solid rgba(19,25,23,.08)}
+.hero-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:100px;font-size:12px;color:var(--text);background:rgba(255,251,246,.92);border:1px solid rgba(53,111,102,.12)}
+.hero-chip i{color:var(--green);font-size:11px}
+.hero-stats{display:flex;border-top:1px solid var(--border);padding-top:40px;opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease) .75s,transform .6s var(--ease) .75s}
+.hero-stats.in{opacity:1;transform:none}
+.hstat{flex:1;padding-right:40px;border-right:1px solid var(--border)}
+.hstat+.hstat{padding-left:40px;padding-right:40px}
+.hstat:last-child{border:none}
+.hstat-n{font-family:var(--serif);font-size:46px;font-weight:300;line-height:1;letter-spacing:-0.03em;color:var(--text);margin-bottom:6px}
+.hstat-l{font-size:13px;color:var(--muted)}
+
+/* ── MARQUEE ── */
+.mq-sec{overflow:hidden;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.mq-sec.green-bg{background:linear-gradient(90deg,var(--blue),var(--red))}
+.mq-sec.cream-bg{background:var(--cream)}
+.mq-trk{display:flex;width:max-content;animation:mq 26s linear infinite}
+.mq-trk.rev{animation-direction:reverse}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{white-space:nowrap;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:0 32px;display:flex;align-items:center;gap:28px}
+.mq-item::after{content:'·';opacity:.5}
+.mq-white .mq-item{color:rgba(255,255,255,.88)}
+.mq-dark .mq-item{color:var(--mid)}
+
+/* ── SECTIONS ── */
+.sec{padding:100px 64px;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:18px}
+.sec-t{font-family:var(--serif);font-weight:300;font-size:clamp(36px,4.5vw,64px);line-height:1.1;letter-spacing:-0.025em;color:var(--text);margin-bottom:20px}
+.sec-b{font-size:17px;font-weight:300;color:var(--mid);line-height:1.75;max-width:560px}
+
+/* ── SERVICE CARDS ── */
+.svc-hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:64px;flex-wrap:wrap}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.svc-card{background:var(--bg);padding:36px 32px;cursor:pointer;position:relative;overflow:hidden;transition:background .3s}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.svc-card:hover{background:var(--off)}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-card:hover .svc-arr{transform:translate(3px,-3px)}
+.svc-card:hover .svc-ico{background:var(--blue);color:#fff}
+.svc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px}
+.svc-ico{width:46px;height:46px;border-radius:12px;background:var(--green-lt);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .3s;flex-shrink:0}
+.svc-time{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border-dk);padding:4px 10px;border-radius:100px;background:var(--bg)}
+.svc-n{font-family:var(--serif);font-size:24px;font-weight:300;color:var(--text);margin-bottom:10px;letter-spacing:-0.01em}
+.svc-d{font-size:14px;font-weight:300;color:var(--mid);line-height:1.7;margin-bottom:24px}
+.svc-lnk{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--blue);background:none;border:none;cursor:pointer;padding:0;transition:gap .2s}
+.svc-lnk:hover{gap:14px}
+.svc-arr{width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;transition:transform .3s var(--ease)}
+
+/* ── TESTIMONIALS ── */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tc{background:var(--off);border:1px solid var(--border);border-radius:16px;padding:32px;transition:transform .3s var(--ease),box-shadow .3s}
+.tc:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.tc-q{font-family:var(--serif);font-size:56px;line-height:.8;color:var(--border-dk);margin-bottom:16px;display:block}
+.tc-txt{font-size:15px;font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:24px}
+.tc-who{display:flex;align-items:center;gap:12px}
+.tc-av{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.tc-nm{font-size:14px;font-weight:500;color:var(--text)}
+.tc-lc{font-size:12px;color:var(--muted);margin-top:1px}
+
+/* ── EXPERT HELP & ADVICE ── */
+.tip-shell{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.95fr);gap:20px;max-width:1120px;margin:0 auto;align-items:stretch}
+.tip-main{position:relative;overflow:hidden;background:linear-gradient(145deg,#ffffff 0%,#f5faff 55%,#edf5fd 100%);border:1px solid rgba(30,126,200,.14);border-radius:30px;padding:34px 34px 28px;box-shadow:0 26px 70px rgba(24,39,33,.08)}
+.tip-main::before{content:'';position:absolute;inset:auto auto -130px -90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.15),transparent 65%);pointer-events:none}
+.tip-main::after{content:'';position:absolute;top:-80px;right:-40px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.12),transparent 68%);pointer-events:none}
+.tip-topline{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.tip-ey{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);padding:9px 12px;border-radius:999px;background:rgba(30,126,200,.08);border:1px solid rgba(30,126,200,.12)}
+.tip-ey i{font-size:11px}
+.tip-meta{display:flex;flex-wrap:wrap;gap:8px}
+.tip-mini{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;background:rgba(255,250,244,.82);border:1px solid rgba(30,126,200,.1);font-size:11px;color:var(--mid)}
+.tip-mini i{color:var(--blue);font-size:10px}
+.tip-quote{position:relative;z-index:1;padding:28px;border-radius:26px;background:rgba(255,255,255,.7);border:1px solid rgba(30,126,200,.1);backdrop-filter:blur(10px)}
+.tip-mark{position:absolute;top:12px;left:18px;font-family:var(--serif);font-size:96px;line-height:.8;color:rgba(30,126,200,.08);pointer-events:none}
+.tip-focus{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid rgba(30,126,200,.1);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tip-focus i{color:var(--blue);font-size:11px}
+.tip-txt{position:relative;z-index:1;font-family:var(--serif);font-size:clamp(25px,3vw,38px);font-weight:300;font-style:italic;color:var(--text);line-height:1.42;letter-spacing:-.015em;margin-bottom:22px;transform-origin:left center}
+.tip-summary{position:relative;z-index:1;font-size:15px;color:var(--mid);line-height:1.85;max-width:60ch}
+.tip-ft{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:22px;border-top:1px solid rgba(30,126,200,.12)}
+.tip-doc{display:flex;align-items:center;gap:14px}
+.tip-doc-visual{position:relative;flex-shrink:0}
+.tip-doc-ring{position:absolute;inset:-7px;border-radius:50%;border:1px solid rgba(30,126,200,.16);animation:tipPulse 2.8s ease-out infinite}
+.tip-doc img{width:56px;height:56px;border-radius:50%;object-fit:cover;position:relative;z-index:1;box-shadow:0 14px 28px rgba(30,126,200,.18)}
+.tip-dnm{font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px}
+.tip-drl{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.tip-nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tip-arrow,.tip-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:46px;border-radius:999px;cursor:pointer;transition:transform .26s var(--ease),background .24s,border-color .24s,box-shadow .24s}
+.tip-arrow{width:46px;border:1px solid rgba(30,126,200,.18);background:rgba(255,255,255,.85);color:var(--green);box-shadow:0 10px 20px rgba(24,39,33,.05)}
+.tip-arrow:hover,.tip-btn:hover{transform:translateY(-2px)}
+.tip-btn{padding:0 20px;border:1px solid transparent;background:var(--blue);color:#fff;box-shadow:0 16px 30px rgba(30,126,200,.2);font-size:13px;font-weight:600}
+.tip-btn:hover{background:var(--green-dk);box-shadow:0 22px 36px rgba(30,126,200,.28)}
+.tip-progress{position:relative;z-index:1;width:100%;height:6px;border-radius:999px;background:rgba(30,126,200,.09);overflow:hidden;margin-top:20px}
+.tip-progress span{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--blue),#6fb4ea);box-shadow:0 4px 16px rgba(30,126,200,.2)}
+.tip-side{display:grid;grid-template-rows:auto auto auto;gap:18px}
+.tip-side-card,.tip-stat-grid{background:#fff;border:1px solid rgba(30,126,200,.12);border-radius:28px;box-shadow:0 18px 44px rgba(24,39,33,.06)}
+.tip-side-card{padding:24px 24px 22px;background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)}
+.tip-side-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.tip-side-copy{font-size:15px;color:var(--mid);line-height:1.85}
+.tip-stat-grid{padding:18px;display:grid;gap:12px}
+.tip-stat{display:flex;align-items:flex-start;gap:12px;padding:14px 12px;border-radius:20px;background:#f7fbff;border:1px solid rgba(30,126,200,.08)}
+.tip-stat i{width:36px;height:36px;border-radius:12px;background:rgba(30,126,200,.09);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.tip-stat strong{display:block;font-size:14px;color:var(--text);margin-bottom:4px}
+.tip-stat span{display:block;font-size:13px;color:var(--mid);line-height:1.65}
+.tip-dots{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 8px}
+.tip-dot{width:12px;height:12px;border-radius:50%;border:none;background:rgba(30,126,200,.16);cursor:pointer;transition:transform .24s var(--ease),background .24s,box-shadow .24s;padding:0}
+.tip-dot.active{background:var(--green);transform:scale(1.15);box-shadow:0 0 0 6px rgba(30,126,200,.12)}
+.tip-swap-in{animation:tipContentIn .58s var(--ease)}
+.tip-image-in{animation:tipImageIn .62s var(--ease)}
+.tip-shell.tip-card-shimmer .tip-main{animation:tipCardLift .68s var(--ease)}
+@keyframes tipPulse{0%{transform:scale(.84);opacity:.55}70%{transform:scale(1.2);opacity:0}100%{transform:scale(1.2);opacity:0}}
+@keyframes tipContentIn{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes tipImageIn{0%{opacity:0;transform:scale(.82) rotate(-6deg)}60%{opacity:1;transform:scale(1.06) rotate(2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes tipCardLift{0%{transform:translateY(0) scale(1)}45%{transform:translateY(-4px) scale(1.01)}100%{transform:translateY(0) scale(1)}}
+
+/* ── ABOUT ── */
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-iw{position:relative;border-radius:20px;overflow:hidden}
+.about-img{width:100%;height:520px;object-fit:cover;transform:scale(1.07);transition:transform 1.1s var(--ease)}
+.about-iw.in .about-img{transform:scale(1)}
+.about-bdg{position:absolute;bottom:28px;right:28px;background:rgba(250,250,248,.95);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;padding:18px 22px;max-width:220px}
+.about-bdg p{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--text);line-height:1.45}
+.af-list{display:flex;flex-direction:column}
+.af{display:flex;align-items:flex-start;gap:18px;padding:24px 0;border-bottom:1px solid var(--border)}
+.af:last-child{border:none}
+.af-ico{width:40px;height:40px;border-radius:10px;background:var(--green-lt);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px}
+.af-t{font-size:15px;font-weight:500;color:var(--text);margin-bottom:5px}
+.af-b{font-size:14px;font-weight:300;color:var(--mid);line-height:1.7}
+
+/* ── LOCATION ── */
+.loc-g{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
+.loc-list{display:flex;flex-direction:column}
+.loc-it{display:flex;align-items:flex-start;gap:16px;padding:24px 0;border-bottom:1px solid var(--border)}
+.loc-it:last-child{border:none}
+.loc-ico{width:38px;height:38px;border-radius:10px;background:var(--green-lt);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.loc-lbl{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.loc-txt{font-size:14px;font-weight:300;color:var(--mid);line-height:1.7}
+.loc-acc{font-size:13px;color:var(--blue);margin-top:3px}
+.loc-btns{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.loc-btn{display:flex;align-items:center;justify-content:center;gap:9px;padding:13px;border-radius:12px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:none;transition:all .2s}
+.lb-map{background:var(--off);color:var(--text);border:1px solid var(--border-dk)}.lb-map:hover{background:var(--cream)}
+.lb-wa{background:var(--wa);color:#fff}.lb-wa:hover{background:#1ea855}
+.map-w{border-radius:20px;overflow:hidden;border:1px solid var(--border);height:480px}
+.map-w iframe{width:100%;height:100%;border:0}
+
+/* ── BOOKING ── */
+.form-c{max-width:680px;margin:0 auto;background:var(--off);border:1px solid var(--border);border-radius:20px;padding:48px}
+.f-stk{display:flex;flex-direction:column;gap:20px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fl{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.fi,.fs,.fta{background:var(--bg);border:1.5px solid var(--border-dk);border-radius:10px;padding:12px 15px;font-family:var(--sans);font-size:14px;color:var(--text);transition:border-color .2s,box-shadow .2s}
+.fi::placeholder,.fta::placeholder{color:var(--border-dk)}
+.fi:focus,.fs:focus,.fta:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,126,200,.1)}
+.fs{cursor:pointer} .fs option{background:var(--bg)}
+.fta{resize:none;min-height:96px}
+.tnote{font-size:11px;color:var(--blue);margin-top:5px;display:none}
+.fsb{width:100%;padding:15px;font-family:var(--sans);font-size:15px;font-weight:500;color:#fff;background:var(--blue);border:none;border-radius:100px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .25s var(--ease)}
+.fsb:hover{background:var(--green-dk);transform:translateY(-2px);box-shadow:0 8px 28px rgba(30,126,200,.24)}
+.fnote{text-align:center;font-size:12px;color:var(--muted);margin-top:14px}
+.rp-card{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;background:#edf5fd;border:1px solid rgba(53,111,102,.18);border-radius:16px;padding:22px 24px;margin-bottom:24px}
+.rp-eyebrow{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.rp-card h3{font-family:var(--serif);font-size:30px;font-weight:300;line-height:1.1;margin-bottom:8px}
+.rp-card p{font-size:14px;color:var(--mid);line-height:1.7;max-width:520px}
+.rp-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.rp-btn{background:var(--bg);color:var(--mid);border:1px solid var(--border-dk);padding:10px 18px;border-radius:100px;cursor:pointer;font-size:13px;font-family:var(--sans);transition:all .2s}
+.rp-btn:hover{color:var(--text);border-color:var(--mid)}
+.rp-btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.rp-btn.primary:hover{background:var(--green-dk);border-color:var(--green-dk)}
+.rp-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(30,126,200,.08);color:var(--blue);padding:7px 12px;border-radius:100px;font-size:12px;font-weight:500;margin-top:10px}
+.profile-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.profile-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,251,246,.92);border:1px solid var(--border);font-size:12px;color:var(--mid)}
+.profile-chip i{color:var(--green);font-size:11px}
+.rp-modal{position:fixed;inset:0;background:rgba(17,24,39,.42);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px;z-index:1000}
+.rp-modal.open{display:flex}
+.rp-panel{width:min(100%,560px);background:var(--bg);border:1px solid var(--border);border-radius:22px;padding:28px;box-shadow:0 24px 80px rgba(71,52,33,.12)}
+.auth-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--off);padding:6px;border-radius:16px;margin:18px 0 18px}
+.auth-tab{border:none;background:transparent;border-radius:12px;padding:11px 14px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;transition:all .2s}
+.auth-tab.active{background:rgba(255,251,246,.94);color:var(--text);box-shadow:0 8px 24px rgba(71,52,33,.06)}
+.auth-view{display:none}
+.auth-view.active{display:block}
+.auth-stack{display:flex;flex-direction:column;gap:16px}
+.auth-mini-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.auth-note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:14px}
+.auth-welcome{display:flex;align-items:center;gap:12px;background:var(--green-lt);border:1px solid rgba(30,126,200,.14);padding:14px 16px;border-radius:16px;color:var(--green);font-size:13px;font-weight:500;margin-bottom:16px}
+.auth-welcome i{font-size:15px}
+.auth-profile-card{background:linear-gradient(180deg,#edf5fd 0%,#f6fbff 100%);border:1px solid rgba(30,126,200,.16);border-radius:20px;padding:22px}
+.auth-profile-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.auth-big-avatar{width:64px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--green),#6fb4ea);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;box-shadow:0 14px 36px rgba(30,126,200,.24)}
+.auth-profile-name{font-family:var(--serif);font-size:30px;font-weight:300;line-height:1.05;color:var(--text);margin-bottom:4px}
+.auth-profile-sub{font-size:12px;color:var(--blue);font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.auth-profile-list{display:grid;gap:10px}
+.auth-profile-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;border-radius:14px;background:rgba(255,251,246,.94);border:1px solid var(--border)}
+.auth-profile-item span:first-child{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.auth-profile-item strong{font-size:13px;color:var(--text);text-align:right;word-break:break-word}
+.rp-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}
+.rp-top h3{font-family:var(--serif);font-size:34px;font-weight:300;line-height:1.05}
+.rp-top p{font-size:14px;color:var(--mid);line-height:1.7;margin-top:8px}
+.rp-close{width:38px;height:38px;border:none;border-radius:50%;background:var(--off);color:var(--mid);cursor:pointer;font-size:16px;flex-shrink:0}
+.rp-close:hover{color:var(--text)}
+.rp-grid{display:grid;gap:16px}
+.rp-help{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+#fsucc{display:none;text-align:center;padding:40px}
+.si{width:60px;height:60px;border-radius:50%;background:var(--green-lt);border:1.5px solid var(--green);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:22px;margin:0 auto 18px}
+.st{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--text);margin-bottom:8px}
+.sb{font-size:15px;color:var(--mid);margin-bottom:22px}
+.rb{background:var(--off);color:var(--mid);border:1px solid var(--border-dk);padding:10px 22px;border-radius:100px;cursor:pointer;font-size:13px;font-family:var(--sans);transition:all .2s}
+.rb:hover{color:var(--text);border-color:var(--mid)}
+
+/* ── PROFILE LOGIN ANIMATIONS ── */
+.auth-view.active{animation:authViewIn .36s var(--ease)}
+.tn-profile-shell.profile-enter{animation:profileShellIn .68s var(--ease)}
+.tn-profile-btn.profile-enter{animation:profileChipIn .68s var(--ease)}
+.tn-avatar.avatar-pop{animation:avatarPop .82s var(--ease)}
+.rp-card.profile-highlight{animation:profileCardPulse .85s var(--ease)}
+.profile-toast{position:fixed;top:84px;right:22px;z-index:450;display:flex;align-items:center;gap:14px;min-width:280px;max-width:360px;padding:14px 16px;border-radius:22px;background:rgba(255,250,244,.97);backdrop-filter:blur(18px);border:1px solid rgba(30,126,200,.16);box-shadow:0 18px 56px rgba(0,0,0,.12);opacity:0;transform:translateY(-14px) scale(.96);pointer-events:none;transition:opacity .28s ease,transform .36s var(--ease)}
+.profile-toast.show{opacity:1;transform:translateY(0) scale(1)}
+.profile-toast-icon{position:relative;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--green),#6fb4ea);color:#fff;font-size:17px;font-weight:700;flex-shrink:0;box-shadow:0 14px 30px rgba(30,126,200,.24)}
+.profile-toast-icon::after{content:'';position:absolute;inset:-7px;border-radius:50%;border:1px solid rgba(30,126,200,.16);opacity:0;transform:scale(.7)}
+.profile-toast.show .profile-toast-icon::after{animation:toastRing .9s ease-out}
+.profile-toast-copy{display:flex;flex-direction:column;line-height:1.08}
+.profile-toast-copy small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:4px}
+.profile-toast-copy strong{font-size:15px;color:var(--text);font-weight:700;margin-bottom:4px;max-width:230px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.profile-toast-copy span{font-size:12px;color:var(--mid);line-height:1.45}
+@keyframes authViewIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes profileShellIn{0%{opacity:0;transform:translateY(-8px) scale(.94)}60%{opacity:1;transform:translateY(0) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes profileChipIn{0%{transform:translateY(-10px) scale(.92)}65%{transform:translateY(0) scale(1.03)}100%{transform:translateY(0) scale(1)}}
+@keyframes avatarPop{0%{transform:scale(.7)}55%{transform:scale(1.14)}100%{transform:scale(1)}}
+@keyframes toastRing{0%{opacity:.45;transform:scale(.72)}100%{opacity:0;transform:scale(1.45)}}
+@keyframes profileCardPulse{0%{transform:translateY(0);box-shadow:0 14px 36px rgba(0,0,0,.06)}45%{transform:translateY(-3px);box-shadow:0 26px 54px rgba(30,126,200,.14)}100%{transform:translateY(0);box-shadow:0 14px 36px rgba(0,0,0,.06)}}
+@media (max-width:700px){.profile-toast{left:14px;right:14px;top:74px;min-width:0;max-width:none}}
+
+/* ── FOOTER ── */
+footer{background:#1f1c18;color:#fff;padding:72px 64px 40px}
+.ft{max-width:1400px;margin:0 auto}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr;gap:64px;margin-bottom:56px}
+.ft-lo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ft-li{width:56px;height:42px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(30,126,200,.14);box-shadow:0 10px 24px rgba(20,38,56,.06);display:flex;align-items:center;justify-content:center;padding:2px 4px}.ft-li img{width:100%;height:100%;object-fit:contain;display:block}
+.ft-bn{font-size:16px;font-weight:500}
+.ft-bn .bl{color:var(--blue)} .ft-bn .rd{color:var(--red)}
+.ft-ds{font-size:14px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7;max-width:260px}
+.ft-ct{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.ft-ls{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-ls li{font-size:14px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.6}
+.ft-ls li i{color:var(--blue);margin-right:7px;width:13px}
+.ft-ls .ac{color:rgba(30,126,200,.78)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ft-cp{font-size:12px;color:rgba(255,255,255,.3)}
+
+/* ── SERVICE DETAIL PAGES ── */
+.dt-hero{padding-top:60px;min-height:58vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:#0f2235}
+.dt-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,18,29,.18) 0%,rgba(8,18,29,.3) 34%,rgba(8,18,29,.72) 100%)}
+.dt-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.48) saturate(.75);transform:scale(1.05);transition:transform 7s linear}
+.dt-img.ld{transform:scale(1)}
+.dt-cnt{position:relative;z-index:1;padding:80px 64px 56px;width:100%}
+.dt-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;transform:translateY(-10px)}
+.dt-back{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,.82);background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.18);padding:8px 14px;border-radius:100px;cursor:pointer;margin-bottom:0;transition:all .2s;min-height:38px}
+.dt-back i{font-size:11px}
+.dt-back:hover{color:#fff;background:rgba(255,255,255,.16)}
+.dt-bdg{display:inline-flex;align-items:center;justify-content:center;min-height:38px;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:rgba(172,213,223,.18);border:1px solid rgba(172,213,223,.34);padding:7px 12px;border-radius:100px;margin-bottom:0;backdrop-filter:blur(10px)}
+.dt-t{font-family:var(--serif);font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1.02;letter-spacing:-0.03em;color:#fff;margin-bottom:16px;max-width:760px}
+.dt-s{font-size:18px;font-weight:300;color:rgba(255,255,255,.82);max-width:640px;line-height:1.75}
+.dt-body{padding:72px 64px 86px;background:linear-gradient(180deg,#f5f9fd 0%,#eef5fb 100%)}
+.dt-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,.9fr);gap:28px;align-items:start}
+.dt-main{min-width:0}
+.dt-intro{font-size:16px;line-height:1.92;color:var(--mid);margin-bottom:24px;max-width:860px}
+.dt-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:20px}
+.dt-kpi{background:rgba(255,255,255,.86);border:1px solid rgba(30,126,200,.12);border-radius:22px;padding:18px 18px 16px;box-shadow:0 12px 28px rgba(20,38,56,.05)}
+.dt-kpi small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.dt-kpi strong{display:block;font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px}
+.dt-kpi span{display:block;font-size:13px;line-height:1.6;color:var(--mid)}
+.dt-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:10px}
+.dt-card{background:rgba(255,255,255,.9);border:1px solid rgba(30,126,200,.12);border-radius:24px;padding:24px;box-shadow:0 16px 34px rgba(20,38,56,.05)}
+.dt-card.full{grid-column:1/-1}
+.ds-t{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.dt-copy{font-size:14px;line-height:1.85;color:var(--mid)}
+.dl{list-style:none;display:flex;flex-direction:column;gap:13px}
+.dl li{display:flex;align-items:flex-start;gap:11px;font-size:14px;font-weight:400;color:var(--mid);line-height:1.7}
+.dl li i{color:var(--green);font-size:12px;margin-top:4px;flex-shrink:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{font-size:12px;color:var(--mid);background:#f3f8fc;border:1px solid var(--border);border-radius:999px;padding:7px 13px;display:inline-flex;align-items:center;gap:7px}
+.chip i{color:var(--green);font-size:11px}
+.dt-side{position:sticky;top:86px;display:flex;flex-direction:column;gap:16px}
+.dt-box,.dt-note{background:rgba(255,255,255,.92);border:1px solid rgba(30,126,200,.12);border-radius:24px;padding:24px;box-shadow:0 16px 34px rgba(20,38,56,.05)}
+.db-t{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.db-r{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:12px 0;border-bottom:1px solid var(--border)}
+.db-r:last-child{border:none;padding-bottom:0}
+.db-k{font-size:13px;color:var(--muted)}
+.db-v{font-size:13px;font-weight:600;color:var(--text);text-align:right}
+.dt-actions{display:flex;flex-direction:column;gap:12px}
+.dt-cta,.dt-ghost{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 16px;font-size:14px;font-weight:600;border-radius:999px;border:none;cursor:pointer;text-decoration:none;transition:all .25s var(--ease)}
+.dt-cta{background:var(--blue);color:#fff;box-shadow:0 12px 24px rgba(30,126,200,.18)}
+.dt-cta:hover{background:var(--green-dk);transform:translateY(-2px)}
+.dt-ghost{background:#fff;color:var(--blue);border:1px solid rgba(30,126,200,.18)}
+.dt-ghost:hover{background:var(--green-lt);transform:translateY(-2px)}
+.da-t{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.da-b{font-size:13px;font-weight:400;color:var(--mid);line-height:1.8}
+.dt-faq{display:grid;gap:12px}
+.dt-faq-item{padding:16px 18px;border-radius:18px;background:#f5f9fc;border:1px solid rgba(30,126,200,.1)}
+.dt-faq-item strong{display:block;font-size:14px;color:var(--text);margin-bottom:6px}
+.dt-faq-item span{display:block;font-size:13px;line-height:1.75;color:var(--mid)}
+.dt-highlight{background:linear-gradient(135deg,rgba(172,213,223,.18),rgba(255,255,255,.92));border:1px solid rgba(30,126,200,.12)}
+.dt-highlight .ds-t{margin-bottom:12px}
+.dt-highlight .dt-copy{color:var(--text)}
+@media(max-width:1100px){
+  .dt-kpis,.dt-card-grid{grid-template-columns:1fr}
+}
+
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  #sidenav{display:none}
+  #mc{margin-left:0}
+  .ham{display:flex;align-items:center;justify-content:center}
+  .tn-links,.tn-right{display:none}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-g{grid-template-columns:1fr 1fr;gap:40px}
+  .about-g,.loc-g,.dt-grid,.tip-shell{grid-template-columns:1fr;gap:48px}
+  .dt-side{position:static}
+  .hero-shell{min-height:520px;padding:40px 40px 34px}
+  .hero-copy{max-width:68%}
+  .hero-info-card{width:min(320px,42%);right:24px;bottom:24px}
+}
+@media(max-width:700px){
+  .svc-grid,.tgrid{grid-template-columns:1fr}
+  .hero-shell{min-height:auto;padding:28px 22px 24px;border-radius:28px;margin-bottom:32px;align-items:flex-start}
+  .hero-shell::before{background:linear-gradient(180deg,rgba(248,246,242,.98) 0%,rgba(248,246,242,.95) 28%,rgba(248,246,242,.78) 52%,rgba(248,246,242,.36) 100%)}
+  .hero-shell::after{width:260px;height:260px;right:-70px;top:-46px}
+  .hero-photo-layer{background-position:center top}
+  .hero-copy{max-width:100%}
+  .hero-title{font-size:clamp(48px,15vw,72px);margin-bottom:24px}
+  .hero-sub{font-size:16px;line-height:1.8;margin-bottom:34px}
+  .hero-acts{gap:12px}
+  .hero-info-card{position:relative;right:auto;bottom:auto;width:100%;margin-top:24px;padding:18px 18px 16px;border-radius:20px}
+  .hero-info-top{align-items:flex-start}
+  .hero-info-v{font-size:18px}
+  .hero-info-row{padding-top:12px}
+  .hero-stats{flex-direction:column;gap:0}
+  .hstat{border-right:none;padding:0 0 20px;border-bottom:1px solid var(--border);margin-bottom:20px}
+  .hstat:last-child{border:none;margin:0;padding:0}
+  .sec,#s-hero{padding-left:24px;padding-right:24px}
+  .dt-cnt,.dt-body{padding-left:24px;padding-right:24px}
+  footer{padding:48px 24px 32px}
+  .ft-g{grid-template-columns:1fr;gap:32px}
+  .form-c{padding:28px 20px}
+  .f-row{grid-template-columns:1fr}
+  .rp-card{padding:18px;flex-direction:column}
+  .rp-actions{justify-content:flex-start}
+  .tip-main{padding:24px 22px 22px;border-radius:24px}
+  .tip-quote{padding:22px 18px 18px}
+  .tip-ft{align-items:flex-start}
+  .tip-nav{width:100%}
+  .tip-btn{flex:1;justify-content:center}
+  .tip-side-card,.tip-stat-grid{border-radius:22px}
+  .tip-mark{font-size:80px;left:12px}
+}
+
+/* palette polish */
+.sec:nth-of-type(even){background:linear-gradient(180deg,rgba(239,233,225,.38),rgba(246,243,238,0));}
+.t-card,.s-card,.ab-card,.ts-card,.auth-profile-item,.rp-card,.hero-info-card,.lb-card,.dt-box,.form-c{box-shadow:0 14px 36px rgba(81,60,35,.05);}
+
+
+
+/* ── ENHANCED HIGHLIGHTS + ANIMATIONS ── */
+@keyframes softFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes sheen{0%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(30,126,200,.14)}65%{box-shadow:0 0 0 14px rgba(30,126,200,0)}}
+@keyframes fadeRise{0%{opacity:0;transform:translateY(26px) scale(.985)}100%{opacity:1;transform:none}}
+@keyframes fadeLeft{0%{opacity:0;transform:translateX(-22px)}100%{opacity:1;transform:none}}
+@keyframes fadeRight{0%{opacity:0;transform:translateX(22px)}100%{opacity:1;transform:none}}
+
+.eyebrow{position:relative;padding-left:16px}
+.eyebrow::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 7px rgba(30,126,200,.10)}
+.sec-t{position:relative;display:inline-block;padding-bottom:14px}
+.sec-t::after{content:'';position:absolute;left:0;bottom:0;width:92px;height:4px;border-radius:999px;background:linear-gradient(90deg,var(--blue),rgba(30,126,200,.18));transform-origin:left;transform:scaleX(.22);transition:transform .8s var(--ease)}
+.sec-t.rv.in::after{transform:scaleX(1)}
+
+.btn-grn,.tn-book,.fsb,.tip-btn,.rp-btn.primary,.dt-cta{position:relative;overflow:hidden;isolation:isolate}
+.btn-grn::after,.tn-book::after,.fsb::after,.tip-btn::after,.rp-btn.primary::after,.dt-cta::after{content:'';position:absolute;inset:-20% auto auto -35%;width:42%;height:140%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent);transform:translateX(-150%) skewX(-18deg);pointer-events:none}
+.btn-grn:hover::after,.tn-book:hover::after,.fsb:hover::after,.tip-btn:hover::after,.rp-btn.primary:hover::after,.dt-cta:hover::after{animation:sheen 1.05s var(--ease)}
+
+.hero-pill,.hero-chip,.tip-mini,.profile-chip,.chip{transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
+.hero-chip:hover,.tip-mini:hover,.profile-chip:hover,.chip:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,38,56,.07);border-color:rgba(30,126,200,.18)}
+
+.hero-shell{box-shadow:0 24px 70px rgba(22,34,30,.10),0 0 0 1px rgba(172,213,223,.45)}
+.hero-info-card{overflow:hidden}
+.hero-info-card::after{content:'';position:absolute;inset:auto -35px -55px auto;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.14),transparent 72%);pointer-events:none}
+.hstat{position:relative;border-radius:24px;transition:transform .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease);padding-top:14px;padding-bottom:14px}
+.hstat:hover{transform:translateY(-4px);background:linear-gradient(180deg,rgba(255,255,255,.52),rgba(255,255,255,0));box-shadow:0 14px 34px rgba(20,38,56,.06)}
+
+#s-services{position:relative;overflow:hidden}
+#s-services::before{content:'';position:absolute;top:28px;right:48px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(172,213,223,.28),transparent 70%);pointer-events:none;filter:blur(2px)}
+.svc-grid{background:linear-gradient(180deg,rgba(30,126,200,.08),rgba(255,255,255,.24));box-shadow:0 22px 50px rgba(20,38,56,.06)}
+.svc-card{isolation:isolate;transition:transform .38s var(--ease),background .32s var(--ease),box-shadow .32s var(--ease)}
+.svc-card::before{content:'';position:absolute;top:-35px;left:-18px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(172,213,223,.42),transparent 72%);opacity:0;transform:translateY(20px);transition:opacity .36s var(--ease),transform .36s var(--ease);pointer-events:none;z-index:0}
+.svc-card > *{position:relative;z-index:1}
+.svc-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(20,38,56,.09)}
+.svc-card:hover::before{opacity:1;transform:translateY(0)}
+.svc-card:hover .svc-n{color:var(--blue)}
+.svc-card:hover .svc-time{border-color:rgba(30,126,200,.22);box-shadow:0 10px 24px rgba(20,38,56,.06)}
+.svc-card:nth-child(1) .svc-ico,.svc-card:nth-child(4) .svc-ico{animation:softFloat 6.4s ease-in-out infinite}
+.svc-card:nth-child(2) .svc-ico,.svc-card:nth-child(5) .svc-ico{animation:softFloat 5.6s ease-in-out infinite .35s}
+.svc-card:nth-child(3) .svc-ico,.svc-card:nth-child(6) .svc-ico{animation:softFloat 6.9s ease-in-out infinite .7s}
+
+.tc,.af,.loc-it,.rp-card,.form-c,.map-w,.tip-side-card,.tip-stat{transition:transform .34s var(--ease),box-shadow .34s var(--ease),border-color .28s var(--ease),background .28s var(--ease)}
+.tc:hover,.af:hover,.loc-it:hover,.map-w:hover,.tip-side-card:hover,.tip-stat:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,38,56,.09);border-color:rgba(30,126,200,.18)}
+.af,.loc-it{border-radius:18px}
+.af:hover,.loc-it:hover{background:rgba(255,255,255,.55)}
+.form-c{position:relative;overflow:hidden}
+.form-c::before{content:'';position:absolute;top:-120px;right:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.12),transparent 72%);pointer-events:none}
+.rp-card{position:relative;overflow:hidden}
+.rp-card::after{content:'';position:absolute;inset:auto -60px -80px auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(172,213,223,.28),transparent 74%);pointer-events:none}
+
+[id^="p-"] .dt-hero{position:relative}
+[id^="p-"] .dt-hero::before{content:'';position:absolute;right:-40px;top:-20px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(172,213,223,.28),transparent 72%);z-index:0;pointer-events:none}
+[id^="p-"] .dt-back,[id^="p-"] .dt-bdg,[id^="p-"] .dt-t,[id^="p-"] .dt-s{opacity:0}
+[id^="p-"].service-ready .dt-back{animation:fadeLeft .55s var(--ease) .04s forwards}
+[id^="p-"].service-ready .dt-bdg{animation:fadeRise .55s var(--ease) .14s forwards}
+[id^="p-"].service-ready .dt-t{animation:fadeRise .7s var(--ease) .24s forwards}
+[id^="p-"].service-ready .dt-s{animation:fadeRise .7s var(--ease) .38s forwards}
+
+.svc-reveal{opacity:0;transform:translateY(26px) scale(.99);transition:opacity .78s var(--ease),transform .78s var(--ease),box-shadow .32s var(--ease),border-color .28s var(--ease),background .28s var(--ease)}
+.svc-reveal.in{opacity:1;transform:none}
+.dt-kpi,.dt-card,.dt-box,.dt-note,.dt-faq-item{position:relative;overflow:hidden}
+.dt-kpi::after,.dt-card::after,.dt-box::after,.dt-note::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.46) 45%,transparent 72%);transform:translateX(-120%);opacity:0;pointer-events:none}
+.dt-kpi:hover::after,.dt-card:hover::after,.dt-box:hover::after,.dt-note:hover::after{opacity:1;animation:sheen 1.05s var(--ease)}
+.dt-kpi:hover,.dt-card:hover,.dt-box:hover,.dt-note:hover,.dt-faq-item:hover{transform:translateY(-6px);box-shadow:0 20px 42px rgba(20,38,56,.08);border-color:rgba(30,126,200,.22)}
+.dt-bdg{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 12px 28px rgba(0,0,0,.10)}
+.ds-t{position:relative;display:inline-block;padding-bottom:10px;margin-bottom:14px}
+.ds-t::after{content:'';position:absolute;left:0;bottom:0;width:64px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--blue),rgba(30,126,200,.10))}
+.db-t,.da-t{position:relative;padding-left:15px}
+.db-t::before,.da-t::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:7px;height:7px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px rgba(30,126,200,.10)}
+.db-r{transition:transform .28s var(--ease),padding-left .28s var(--ease),border-color .28s var(--ease)}
+.dt-box:hover .db-r{transform:translateX(3px);border-color:rgba(30,126,200,.18)}
+.dt-actions .dt-cta{animation:pulseGlow 3.5s ease-in-out infinite}
+.dt-actions .dt-ghost{background:linear-gradient(180deg,#fff,#f6fbff)}
+.dt-faq-item strong{position:relative;padding-left:16px}
+.dt-faq-item strong::before{content:'';position:absolute;left:0;top:.48em;width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px rgba(30,126,200,.08)}
+.dt-highlight{position:relative;overflow:hidden}
+.dt-highlight::before{content:'';position:absolute;right:-36px;bottom:-48px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.14),transparent 70%);pointer-events:none}
+
+
+/* ── CONTINUOUS MOVING ANIMATIONS ── */
+@keyframes ambientDrift{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  25%{transform:translate3d(16px,-12px,0) scale(1.04)}
+  50%{transform:translate3d(-10px,14px,0) scale(.98)}
+  75%{transform:translate3d(10px,8px,0) scale(1.02)}
+}
+@keyframes ambientDriftReverse{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  30%{transform:translate3d(-14px,-8px,0) scale(1.03)}
+  60%{transform:translate3d(12px,14px,0) scale(.99)}
+}
+@keyframes gentleBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes tinyBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(2deg)}}
+@keyframes softGlowRing{0%,100%{box-shadow:0 0 0 0 rgba(30,126,200,.08)}55%{box-shadow:0 0 0 12px rgba(30,126,200,0)}}
+@keyframes sweepLoop{0%{transform:translateX(-180%) skewX(-18deg)}100%{transform:translateX(380%) skewX(-18deg)}}
+@keyframes gradientDrift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes serviceHeroDrift{
+  0%{transform:scale(1.06) translate3d(0,0,0)}
+  50%{transform:scale(1.1) translate3d(-12px,-8px,0)}
+  100%{transform:scale(1.07) translate3d(10px,6px,0)}
+}
+
+.tn-icon{width:58px;height:44px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(30,126,200,.14);box-shadow:0 10px 24px rgba(20,38,56,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:2px 4px}
+.hero-glow{animation:ambientDrift 16s ease-in-out infinite}
+.hero-shell::after{animation:ambientDriftReverse 18s ease-in-out infinite}
+.hero-pill{animation:gentleBob 4.8s ease-in-out infinite}
+.hero-info-card{animation:gentleBob 7.2s ease-in-out infinite .5s}
+.hero-info-icon{animation:tinyBob 4.2s ease-in-out infinite}
+.hstat:nth-child(1) .hstat-n{display:inline-block;animation:gentleBob 6.5s ease-in-out infinite}
+.hstat:nth-child(2) .hstat-n{display:inline-block;animation:gentleBob 6.5s ease-in-out infinite .7s}
+.hstat:nth-child(3) .hstat-n{display:inline-block;animation:gentleBob 6.5s ease-in-out infinite 1.3s}
+
+.mq-sec.green-bg{background-size:200% 200%;animation:gradientDrift 12s ease-in-out infinite}
+
+.svc-grid{position:relative}
+.svc-grid::before{content:'';position:absolute;inset:-20% auto auto -28%;width:28%;height:150%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-18deg);animation:sweepLoop 13s linear infinite;pointer-events:none;z-index:2}
+.svc-time{animation:softGlowRing 4.8s ease-in-out infinite}
+.svc-card:nth-child(2) .svc-time,.svc-card:nth-child(5) .svc-time{animation-delay:.6s}
+.svc-card:nth-child(3) .svc-time,.svc-card:nth-child(6) .svc-time{animation-delay:1.2s}
+
+.tc-av,.af-ico,.loc-ico{animation:tinyBob 5.8s ease-in-out infinite}
+.tc:nth-child(2) .tc-av,.af:nth-child(2) .af-ico,.loc-it:nth-child(2) .loc-ico{animation-delay:.7s}
+.tc:nth-child(3) .tc-av,.af:nth-child(3) .af-ico,.loc-it:nth-child(3) .loc-ico{animation-delay:1.4s}
+
+.tip-main::before{animation:ambientDrift 18s ease-in-out infinite}
+.tip-main::after{animation:ambientDriftReverse 14s ease-in-out infinite}
+.tip-mark{animation:gentleBob 7.6s ease-in-out infinite}
+.tip-side-card{position:relative;overflow:hidden}
+.tip-side-card::after{content:'';position:absolute;inset:-20% auto auto -30%;width:36%;height:150%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-16deg);animation:sweepLoop 15s linear infinite;pointer-events:none;opacity:.5}
+
+.about-iw{animation:gentleBob 8.4s ease-in-out infinite}
+.form-c::before{animation:ambientDriftReverse 18s ease-in-out infinite}
+.map-w{position:relative}
+.map-w::after{content:'';position:absolute;right:-60px;top:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(172,213,223,.30),transparent 70%);pointer-events:none;animation:ambientDrift 16s ease-in-out infinite}
+.rp-card::after{animation:ambientDrift 15s ease-in-out infinite}
+
+[id^="p-"] .dt-hero::before{animation:ambientDrift 18s ease-in-out infinite}
+.dt-img.ld{animation:serviceHeroDrift 18s ease-in-out infinite alternate}
+[id^="p-"] .dt-bdg{animation:gentleBob 5.2s ease-in-out infinite}
+[id^="p-"] .dt-back{animation:gentleBob 6.2s ease-in-out infinite .2s}
+[id^="p-"] .dt-kpi::before,[id^="p-"] .dt-card::before,[id^="p-"] .dt-box::before,[id^="p-"] .dt-note::before{content:'';position:absolute;top:-38px;right:-34px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(172,213,223,.32),transparent 72%);pointer-events:none;animation:ambientDriftReverse 12s ease-in-out infinite}
+[id^="p-"] .dt-kpi:nth-child(2)::before,[id^="p-"] .dt-card:nth-child(2)::before,[id^="p-"] .dt-card:nth-child(4)::before{animation-delay:.7s}
+[id^="p-"] .dt-kpi:nth-child(3)::before,[id^="p-"] .dt-card:nth-child(3)::before,[id^="p-"] .dt-box:nth-child(2)::before{animation-delay:1.4s}
+[id^="p-"] .dt-faq-item strong::before{animation:softGlowRing 4.5s ease-in-out infinite}
+
+@media(max-width:700px){
+  .hero-info-card,.about-iw,[id^="p-"] .dt-back,[id^="p-"] .dt-bdg{animation-duration:5.4s}
+  .svc-grid::before,.tip-side-card::after{opacity:.38}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .svc-card:nth-child(1) .svc-ico,.svc-card:nth-child(2) .svc-ico,.svc-card:nth-child(3) .svc-ico,.svc-card:nth-child(4) .svc-ico,.svc-card:nth-child(5) .svc-ico,.svc-card:nth-child(6) .svc-ico,
+  .dt-actions .dt-cta,.hero-photo-layer.in,.hero-dot,.tip-doc-ring,.tn-icon,.hero-glow,.hero-shell::after,.hero-pill,.hero-info-card,.hero-info-icon,.hstat .hstat-n,.mq-sec.green-bg,.svc-grid::before,.svc-time,.tc-av,.af-ico,.loc-ico,.tip-main::before,.tip-main::after,.tip-mark,.tip-side-card::after,.about-iw,.form-c::before,.map-w::after,.rp-card::after,[id^="p-"] .dt-hero::before,.dt-img.ld,[id^="p-"] .dt-bdg,[id^="p-"] .dt-back,[id^="p-"] .dt-kpi::before,[id^="p-"] .dt-card::before,[id^="p-"] .dt-box::before,[id^="p-"] .dt-note::before,[id^="p-"] .dt-faq-item strong::before{animation:none !important}
+  .svc-reveal,.rv,.rv-l,.rv-r,.rv-u,.sw,.hero-sub,.hero-acts,.hero-info-card,.hero-stats,[id^="p-"] .dt-back,[id^="p-"] .dt-bdg,[id^="p-"] .dt-t,[id^="p-"] .dt-s{opacity:1 !important;transform:none !important;transition:none !important}
+}
+
+
+
+/* MOBILE REFINEMENT PATCH */
+.tn-logo > div:last-child{min-width:0}
+.tn-name,.tn-tag{white-space:nowrap}
+
+@media (max-width:900px){
+  #tnav{padding:0 18px}
+  .tn-inner{gap:12px;min-width:0}
+  .tn-logo{gap:10px;min-width:0}
+  .tn-icon{width:50px;height:38px;border-radius:12px;padding:2px 3px}
+  .tn-name{font-size:16px}
+  .tn-tag{font-size:9px}
+  .fab-g{right:14px;bottom:18px}
+  .fab{width:46px;height:46px;font-size:18px}
+}
+
+@media (max-width:700px){
+  #tnav{height:64px;padding:0 14px}
+  .tn-inner{gap:10px;min-width:0}
+  .tn-logo{flex:1;max-width:calc(100% - 44px)}
+  .tn-icon{width:46px;height:34px;border-radius:10px}
+  .tn-name{font-size:15px;line-height:1.02}
+  .tn-tag{font-size:8px;letter-spacing:.1em}
+  .ham{padding:6px 0 6px 6px}
+  #mob{top:64px;padding:12px 18px 18px}
+  #mob a{font-size:15px;padding:12px 0}
+  #mc,main{padding-top:64px}
+
+  .hero-shell{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:18px;
+    align-items:start;
+    min-height:auto;
+    padding:22px 18px 18px !important;
+    border-radius:24px;
+    margin-bottom:28px;
+  }
+  .hero-shell > *{min-width:0}
+  .hero-shell::before{background:linear-gradient(180deg,rgba(248,246,242,.98) 0%,rgba(248,246,242,.95) 32%,rgba(248,246,242,.82) 60%,rgba(248,246,242,.44) 100%)}
+  .hero-shell::after{width:210px;height:210px;right:-56px;top:-46px}
+  .hero-copy{max-width:none !important;width:100%}
+  .hero-pill,.hero-kicker{font-size:10px;margin-bottom:18px;padding:6px 11px;letter-spacing:.09em}
+  .hero-title,.hero h1{font-size:clamp(34px,11.5vw,50px);line-height:.98;letter-spacing:-.04em;margin-bottom:16px;max-width:11ch}
+  .hero-sub,.hero p{font-size:15px;line-height:1.68;margin-bottom:22px;max-width:none}
+  .hero-acts,.hero-actions{flex-direction:column;align-items:stretch;gap:10px;margin-top:22px}
+  .hero-acts .btn-grn,.hero-acts .btn-out,.hero-actions .pill-btn,.btn-row .btn,.pdf-actions .mini-btn{width:100%;justify-content:center}
+  .hero-info-card,.hero-panel{
+    position:relative !important;
+    inset:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    width:100% !important;
+    max-width:none !important;
+    margin-top:0 !important;
+    padding:18px 16px 16px !important;
+    border-radius:20px !important;
+  }
+  .hero-info-top{display:block}
+  .hero-info-icon{display:none}
+  .hero-info-v,.hero-panel .big{font-size:18px;line-height:1.15}
+  .hero-info-t{font-size:13px;line-height:1.6}
+  .hero-info-row{padding-top:12px;gap:8px}
+  .hero-chip{font-size:11px;padding:8px 10px}
+  .hero-stats{padding-top:26px}
+  .hstat-n{font-size:34px}
+
+  .sec{padding-top:64px;padding-bottom:64px}
+  .wrap{padding:0 16px}
+  .svc-hdr{margin-bottom:34px}
+  .svc-card{padding:24px 20px}
+  .tip-main,.tip-side-card,.t-card,.s-card,.ab-card,.ts-card,.form-c,.lb-card,.rp-card,.card,.soft-card,.pdf-shell,.dt-card,.dt-box,.dt-note,.dt-kpi{border-radius:20px}
+
+  .dt-hero{min-height:auto !important;padding-top:92px;padding-bottom:28px}
+  .dt-cnt{padding:0 18px}
+  .dt-meta{gap:8px;margin-bottom:14px;transform:none}
+  .dt-back,.dt-bdg{min-height:34px;padding:6px 10px;font-size:10px}
+  .dt-t{font-size:clamp(32px,10.8vw,44px);line-height:1.02;margin-bottom:12px;max-width:11ch}
+  .dt-s{font-size:15px;line-height:1.65;max-width:none}
+  .dt-body{padding:34px 18px 56px !important}
+  .dt-grid,.card-grid,.preview-layout{grid-template-columns:1fr !important;gap:18px}
+  .dt-kpis,.dt-card-grid,.quick-grid,.soft-grid,.hero-mini-grid,.field-grid,.meta-grid{grid-template-columns:1fr !important}
+  .dt-side{position:static;gap:12px}
+  .pdf-frame{height:420px}
+}
+
+@media (max-width:480px){
+  #tnav{padding:0 12px}
+  .tn-icon{width:42px;height:32px}
+  .tn-name{font-size:14px}
+  .tn-tag{display:none}
+  .hero-title,.hero h1{font-size:clamp(31px,11.2vw,42px);max-width:10ch}
+  .hero-sub,.hero p,.dt-s{font-size:14px}
+  .hero-pill,.hero-kicker,.dt-bdg,.dt-back{font-size:9px}
+  .hero-info-row{display:grid;grid-template-columns:1fr}
+  .hero-chip{width:100%;justify-content:flex-start}
+  .hero-acts .btn-grn,.hero-acts .btn-out,.hero-actions .pill-btn,.btn-row .btn,.pdf-actions .mini-btn{padding:13px 16px}
+  .fab-g{right:12px;bottom:14px;gap:9px}
+  .fab{width:44px;height:44px;font-size:17px}
+  .hero-panel,.hero-info-card,.card,.dt-card,.dt-box,.dt-note,.dt-kpi{padding:16px !important}
+}
+
+</style>
+</head>
+<body>
+
+<!-- FLOATING BUTTONS -->
+<div class="fab-g">
+  <a href="https://wa.me/919863984852?text=Hi%20Oasis%20Healthcare" target="_blank" aria-label="WhatsApp" class="fab fab-wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="tel:+919863984852" aria-label="Call" class="fab fab-ph"><i class="fas fa-phone-alt"></i></a>
+</div>
+
+<!-- TOP NAV -->
+<header id="tnav">
+  <div class="tn-inner">
+    <a class="tn-logo" href="index.html">
+      <div class="tn-icon"><img src="oasis-healthcare-logo.jpeg" alt="Oasis Healthcare logo"></div>
+      <div>
+        <div class="tn-name"><span class="bl">Oasis</span> <span class="rd">Healthcare</span></div>
+        <div class="tn-tag">Heal · Love · Care</div>
+      </div>
+    </a>
+    <ul class="tn-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a onclick="goSec('s-services')">Services</a></li>
+      <li><a href="bmi-calculator.html">Tools</a></li>
+      <li><a onclick="goSec('s-about')">About</a></li>
+      <li><a onclick="goSec('s-location')">Location</a></li>
+    </ul>
+    <div class="tn-right">
+      <a href="tel:+919863984852" class="tn-call"><i class="fas fa-phone" style="font-size:11px;margin-right:5px"></i>Call</a>
+      <button onclick="openAuthModal()" class="tn-patient" id="navAuthBtn">Patient Login</button>
+      <div class="tn-profile-shell" id="navProfileShell" style="display:none">
+        <button class="tn-profile-btn" onclick="openAuthModal('profile')">
+          <span class="tn-avatar" id="navAvatar">P</span>
+          <span class="tn-profile-copy"><small>My Profile</small><strong id="navProfileName">Patient</strong></span>
+        </button>
+        <button class="tn-logout" onclick="logoutProfile()" aria-label="Logout"><i class="fas fa-right-from-bracket"></i></button>
+      </div>
+      <a onclick="goSec('s-contact')" class="tn-book">Book Visit</a>
+    </div>
+    <button class="ham" id="hbtn" onclick="toggleMob()"><i class="fas fa-bars" id="hico"></i></button>
+  </div>
+</header>
+
+<div id="mob">
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a onclick="closeMob();goSec('s-services')">Services</a>
+  <a href="bmi-calculator.html">Patient Tools</a>
+  <a onclick="closeMob();goSec('s-about')">About</a>
+  <a onclick="closeMob();goSec('s-location')">Location</a>
+  <a onclick="closeMob();goSec('s-testimonials')">Testimonials</a>
+  <a onclick="closeMob();openAuthModal()" class="mob-accent" id="mobLoginLink">Patient Login</a>
+  <a onclick="closeMob();openAuthModal('profile')" class="mob-accent" id="mobProfileLink" style="display:none">My Profile · <span id="mobProfileName">Patient</span></a>
+  <a onclick="closeMob();goSec('s-contact')">Book Appointment →</a>
+</div>
+
+<div class="rp-modal" id="authModal" aria-hidden="true">
+  <div class="rp-panel" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="rp-top">
+      <div>
+        <h3 id="authTitle">Patient Login</h3>
+        <p id="authSubtitle">Create a simple patient profile, log in on this device, and show your name beautifully across the website.</p>
+      </div>
+      <button type="button" class="rp-close" onclick="closeAuthModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="auth-switch" id="authTabs">
+      <button type="button" class="auth-tab active" id="createTab" onclick="setAuthMode('create')">Create Profile</button>
+      <button type="button" class="auth-tab" id="loginTab" onclick="setAuthMode('login')">Login</button>
+    </div>
+
+    <div id="createView" class="auth-view active">
+      <div class="auth-stack">
+        <div class="fg"><label class="fl">Full Name</label><input type="text" id="authName" class="fi" placeholder="Your full name"></div>
+        <div class="f-row">
+          <div class="fg"><label class="fl">Phone</label><input type="tel" id="authPhone" class="fi" placeholder="9876543210"></div>
+          <div class="fg"><label class="fl">Email</label><input type="email" id="authEmail" class="fi" placeholder="you@example.com"></div>
+        </div>
+        <div class="fg"><label class="fl">4 Digit PIN</label><input type="password" id="authPin" class="fi" inputmode="numeric" maxlength="4" placeholder="Create a 4 digit PIN"></div>
+        <button type="button" class="rp-btn primary" id="saveProfileBtn" onclick="createOrUpdateProfile()">Create Profile & Login</button>
+      </div>
+      <p class="auth-note">This is a simple patient login for your static website. The profile is stored only in this browser on this device.</p>
+    </div>
+
+    <div id="loginView" class="auth-view">
+      <div class="auth-welcome" id="authWelcome"><i class="fas fa-user-check"></i><span>Welcome back. Log in to show your profile and use your saved details.</span></div>
+      <div class="auth-stack">
+        <div class="fg"><label class="fl">Email</label><input type="email" id="loginEmail" class="fi" placeholder="you@example.com"></div>
+        <div class="fg"><label class="fl">4 Digit PIN</label><input type="password" id="loginPin" class="fi" inputmode="numeric" maxlength="4" placeholder="Enter your 4 digit PIN"></div>
+        <button type="button" class="rp-btn primary" onclick="loginProfile()">Login</button>
+      </div>
+      <div class="auth-mini-actions">
+        <button type="button" class="rp-btn" onclick="setAuthMode('create')">Use Different Details</button>
+        <button type="button" class="rp-btn" id="modalClearProfileBtn" onclick="clearProfile()" style="display:none">Remove Saved Profile</button>
+      </div>
+    </div>
+
+    <div id="profileView" class="auth-view">
+      <div class="auth-profile-card">
+        <div class="auth-profile-head">
+          <div class="auth-big-avatar" id="profileAvatarLarge">P</div>
+          <div>
+            <div class="auth-profile-name" id="profileNameLarge">Patient</div>
+            <div class="auth-profile-sub">Logged in on this device</div>
+          </div>
+        </div>
+        <div class="auth-profile-list">
+          <div class="auth-profile-item"><span>Full Name</span><strong id="profileNameItem">Patient</strong></div>
+          <div class="auth-profile-item"><span>Email</span><strong id="profileEmailItem">-</strong></div>
+          <div class="auth-profile-item"><span>Phone</span><strong id="profilePhoneItem">-</strong></div>
+        </div>
+      </div>
+      <div class="auth-mini-actions">
+        <button type="button" class="rp-btn primary" onclick="setAuthMode('create')">Edit Profile</button>
+        <button type="button" class="rp-btn" onclick="fillBookingFromProfile();goSec('s-contact');closeAuthModal()">Use for Booking</button>
+        <button type="button" class="rp-btn" onclick="logoutProfile()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ HOME PAGE ══════════ -->
+<div id="home" class="page active">
+
+  <!-- SIDENAV -->
+  <nav id="sidenav">
+    <div class="sn-lbl">Navigate</div>
+    <a class="sn-a active" data-s="s-hero" onclick="goSec('s-hero')"><i class="fas fa-home sn-i"></i> Home</a>
+    <a class="sn-a" data-s="s-services" onclick="goSec('s-services')"><i class="fas fa-stethoscope sn-i"></i> Services</a>
+    <a class="sn-a" data-s="s-tip" onclick="goSec('s-tip')"><i class="fas fa-lightbulb sn-i"></i> Health Tips</a>
+    <a class="sn-a" data-s="s-testimonials" onclick="goSec('s-testimonials')"><i class="fas fa-quote-left sn-i"></i> Testimonials</a>
+    <a class="sn-a" data-s="s-about" onclick="goSec('s-about')"><i class="fas fa-hospital sn-i"></i> About</a>
+    <a class="sn-a" data-s="s-location" onclick="goSec('s-location')"><i class="fas fa-map-marker-alt sn-i"></i> Location</a>
+    <a class="sn-a" data-s="s-contact" onclick="goSec('s-contact')"><i class="fas fa-calendar-check sn-i"></i> Book Visit</a>
+  </nav>
+
+  <div id="mc">
+
+    <!-- HERO -->
+    <section id="s-hero" class="sec" style="padding-top:60px;position:relative;overflow:hidden">
+      <div class="hero-glow"></div>
+      <div class="hero-shell" id="heroShell">
+        <div class="hero-photo-layer" id="heroPhoto"></div>
+        <div class="hero-copy">
+          <div class="hero-pill"><span class="hero-dot"></span>Open Today · 7:30 AM – 10:00 PM</div>
+          <h1 class="hero-title" id="htitle"></h1>
+          <p class="hero-sub" id="hsub">In the heart of Kwakta, we're not just treating patients — we're caring for neighbors, friends, and family. Personal attention, modern facilities, genuine compassion.</p>
+          <div class="hero-acts" id="hacts">
+            <a onclick="goSec('s-contact')" class="btn-grn">Schedule a Visit <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
+            <a href="tel:+919863984852" class="btn-out"><i class="fas fa-phone" style="font-size:11px"></i> Call Now</a>
+          </div>
+        </div>
+        <div class="hero-info-card" id="heroInfoCard">
+          <div class="hero-info-top">
+            <div>
+              <div class="hero-info-k">A more welcoming visit</div>
+              <div class="hero-info-v">Comfort-first care with a calm clinic atmosphere</div>
+              <div class="hero-info-t">Organised appointments, warm consultations, and everyday support for families in Kwakta.</div>
+            </div>
+            <div class="hero-info-icon"><i class="fas fa-heart"></i></div>
+          </div>
+          <div class="hero-info-row">
+            <span class="hero-chip"><i class="fas fa-user-md"></i> Expert guidance</span>
+            <span class="hero-chip"><i class="fas fa-clock"></i> Fast appointments</span>
+            <span class="hero-chip"><i class="fas fa-shield-heart"></i> Trusted local care</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats" id="hstats">
+        <div class="hstat"><div class="hstat-n"><span class="cnt" data-t="10">0</span>+</div><div class="hstat-l">Years of Service</div></div>
+        <div class="hstat"><div class="hstat-n"><span class="cnt" data-t="100">0</span>k+</div><div class="hstat-l">Patients Treated</div></div>
+        <div class="hstat"><div class="hstat-n"><span class="cnt" data-t="99">0</span>%</div><div class="hstat-l">Happy Patients</div></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE 1 -->
+    <div class="mq-sec green-bg"><div class="mq-trk mq-white">
+      <div class="mq-item">Ultrasound</div><div class="mq-item">Blood Tests</div><div class="mq-item">Gynaecology</div><div class="mq-item">General Medicine</div><div class="mq-item">Oxygen Rental</div><div class="mq-item">Pharmacy</div>
+      <div class="mq-item">Ultrasound</div><div class="mq-item">Blood Tests</div><div class="mq-item">Gynaecology</div><div class="mq-item">General Medicine</div><div class="mq-item">Oxygen Rental</div><div class="mq-item">Pharmacy</div>
+    </div></div>
+
+    <!-- SERVICES -->
+    <section id="s-services" class="sec">
+      <div class="svc-hdr">
+        <div class="rv"><span class="eyebrow">What We Offer</span><h2 class="sec-t">Medical Services</h2></div>
+        <p class="sec-b rv rv-r" style="max-width:360px">Comprehensive diagnostic and consultation services with personal attention to every patient.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card rv d1" onclick="goPage('p-ultra')">
+          <div class="svc-top"><div class="svc-ico"><i class="fas fa-wave-square"></i></div><span class="svc-time">7 AM – 11 AM</span></div>
+          <div class="svc-n">Ultrasound</div>
+          <div class="svc-d">High-resolution 4D imaging for pregnancy monitoring, abdominal scans, and diagnostic imaging with detailed reports.</div>
+          <button class="svc-lnk">Learn more <span class="svc-arr"><i class="fas fa-arrow-right"></i></span></button>
+        </div>
+        <div class="svc-card rv d2" onclick="goPage('p-blood')">
+          <div class="svc-top"><div class="svc-ico"><i class="fas fa-vial"></i></div><span class="svc-time">7 AM – 11 AM</span></div>
+          <div class="svc-n">Blood Tests</div>
+          <div class="svc-d">Complete blood count, lipid profiles, thyroid tests, and specialized diagnostics with same-day results.</div>
+          <button class="svc-lnk">Learn more <span class="svc-arr"><i class="fas fa-arrow-right"></i></span></button>
+        </div>
+        <div class="svc-card rv d3" onclick="goPage('p-gynae')">
+          <div class="svc-top"><div class="svc-ico"><i class="fas fa-venus"></i></div><span class="svc-time">7:30 AM – 10 PM</span></div>
+          <div class="svc-n">Gynaecology</div>
+          <div class="svc-d">Women's health services including prenatal care, routine check-ups, and specialized treatments in a comfortable environment.</div>
+          <button class="svc-lnk">Learn more <span class="svc-arr"><i class="fas fa-arrow-right"></i></span></button>
+        </div>
+        <div class="svc-card rv d1" onclick="goPage('p-gen')">
+          <div class="svc-top"><div class="svc-ico"><i class="fas fa-stethoscope"></i></div><span class="svc-time">7:30 AM – 10 PM</span></div>
+          <div class="svc-n">General Medicine</div>
+          <div class="svc-d">Comprehensive OPD consultations for chronic diseases, general ailments, preventive health check-ups, and vaccinations.</div>
+          <button class="svc-lnk">Learn more <span class="svc-arr"><i class="fas fa-arrow-right"></i></span></button>
+        </div>
+        <div class="svc-card rv d2" onclick="goPage('p-oxy')">
+          <div class="svc-top"><div class="svc-ico"><i class="fas fa-lungs"></i></div><span class="svc-time">On Request</span></div>
+          <div class="svc-n">Oxygen Rental</div>
+          <div class="svc-d">Medical-grade oxygen cylinders and concentrators available for home care. Delivery and setup assistance provided.</div>
+          <button class="svc-lnk">Learn more <span class="svc-arr"><i class="fas fa-arrow-right"></i></span></button>
+        </div>
+        <div class="svc-card rv d3" onclick="goPage('p-pharm')">
+          <div class="svc-top"><div class="svc-ico"><i class="fas fa-pills"></i></div><span class="svc-time">7:30 AM – 10 PM</span></div>
+          <div class="svc-n">Pharmacy</div>
+          <div class="svc-d">Full-service pharmacy with genuine medications, prescription refills, and over-the-counter healthcare products.</div>
+          <button class="svc-lnk">Learn more <span class="svc-arr"><i class="fas fa-arrow-right"></i></span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE 2 -->
+    <div class="mq-sec cream-bg"><div class="mq-trk rev mq-dark">
+      <div class="mq-item">Heal</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Love</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Care</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Kwakta Bazar · Imphal · Manipur</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Est. 2009</div><div class="mq-item" style="color:var(--red)">·</div>
+      <div class="mq-item">Heal</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Love</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Care</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Kwakta Bazar · Imphal · Manipur</div><div class="mq-item" style="color:var(--red)">·</div><div class="mq-item">Est. 2009</div><div class="mq-item" style="color:var(--red)">·</div>
+    </div></div>
+
+    <!-- HEALTH TIP -->
+    <section id="s-tip" class="sec" style="background:var(--off)">
+      <div style="text-align:center;max-width:720px;margin:0 auto 56px">
+        <span class="eyebrow rv">Daily Insight</span>
+        <h2 class="sec-t rv d1">Expert Help &amp; Advice</h2>
+        <p class="sec-b rv d2" style="margin:14px auto 0;text-align:center">Practical wellness guidance from clinicians presented in a cleaner, calmer way so patients can scan, trust, and follow it easily.</p>
+      </div>
+      <div class="tip-shell rv rv-u" id="tipShell">
+        <div class="tip-main">
+          <div class="tip-topline">
+            <span class="tip-ey"><i class="fas fa-stethoscope"></i> Clinician Reviewed</span>
+            <div class="tip-meta">
+              <span class="tip-mini"><i class="fas fa-bolt"></i> Updated daily</span>
+              <span class="tip-mini"><i class="fas fa-shield-heart"></i> Preventive care</span>
+            </div>
+          </div>
+          <div class="tip-quote">
+            <span class="tip-mark">“</span>
+            <div class="tip-focus" id="tipFocus"><i class="fas fa-heart-pulse"></i> Hydration Focus</div>
+            <p class="tip-txt" id="tipTxt">"Stay hydrated throughout the day. Drinking adequate water supports all bodily functions, improves energy levels, and helps maintain healthy skin."</p>
+            <p class="tip-summary" id="tipSummary">Small daily habits make a big difference. Consistent hydration supports circulation, digestion, and steady energy through the day.</p>
+          </div>
+          <div class="tip-ft">
+            <div class="tip-doc">
+              <div class="tip-doc-visual">
+                <span class="tip-doc-ring"></span>
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80" id="tipImg" alt="Doctor">
+              </div>
+              <div>
+                <div class="tip-dnm" id="tipNm">Dr. Sarah Johnson</div>
+                <div class="tip-drl" id="tipRl">Chief Medical Officer</div>
+              </div>
+            </div>
+            <div class="tip-nav">
+              <button class="tip-arrow" type="button" onclick="prevTip()" aria-label="Previous tip"><i class="fas fa-arrow-left"></i></button>
+              <button class="tip-btn" type="button" onclick="nextTip()">Next advice <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+          <div class="tip-progress"><span id="tipBar"></span></div>
+        </div>
+        <aside class="tip-side">
+          <div class="tip-side-card">
+            <div class="tip-side-title">Why this matters</div>
+            <div class="tip-side-copy" id="tipWhy">Hydration is one of the easiest habits to improve and it supports comfort, focus, and healthy body function throughout the day.</div>
+          </div>
+          <div class="tip-stat-grid">
+            <div class="tip-stat"><i class="fas fa-user-doctor"></i><div><strong>Doctor reviewed</strong><span>Each message is framed like trusted clinic guidance instead of random internet tips.</span></div></div>
+            <div class="tip-stat"><i class="fas fa-leaf"></i><div><strong>Simple daily actions</strong><span>Advice stays practical, light, and easy for patients of any age to follow.</span></div></div>
+            <div class="tip-stat"><i class="fas fa-clock"></i><div><strong>Quick to scan</strong><span>Patients can understand the key message in a few seconds without feeling overwhelmed.</span></div></div>
+          </div>
+          <div class="tip-dots" id="tipDots" aria-label="Advice slides"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="s-testimonials" class="sec">
+      <div style="margin-bottom:56px"><span class="eyebrow rv">Patient Stories</span><h2 class="sec-t rv d1">What patients say</h2></div>
+      <div class="tgrid">
+        <div class="tc rv d1"><span class="tc-q">"</span><p class="tc-txt">The staff at Oasis Healthcare is incredibly professional and caring. The ultrasound facilities are state-of-the-art and the doctors took time to explain everything in detail.</p><div class="tc-who"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop" class="tc-av" alt="Anjali"><div><div class="tc-nm">Anjali Devi</div><div class="tc-lc">Moirang</div></div></div></div>
+        <div class="tc rv d2"><span class="tc-q">"</span><p class="tc-txt">Best gynecology services in Kwakta. The doctor made me feel comfortable and the care during my pregnancy was exceptional. Highly recommended to all!</p><div class="tc-who"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop" class="tc-av" alt="Cristina"><div><div class="tc-nm">Cristina</div><div class="tc-lc">Kwakta</div></div></div></div>
+        <div class="tc rv d3"><span class="tc-q">"</span><p class="tc-txt">Quick blood test results and very affordable pricing. The pharmacy has all required medicines and the staff is very helpful. A reliable healthcare partner.</p><div class="tc-who"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop" class="tc-av" alt="Rajesh"><div><div class="tc-nm">Rajesh Singh</div><div class="tc-lc">Bishnupur</div></div></div></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="s-about" class="sec" style="background:var(--off)">
+      <div class="about-g">
+        <div class="about-iw rv-l" id="aImgW"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&auto=format&fit=crop&q=80" class="about-img" alt="Our Clinic"><div class="about-bdg"><p>"Caring for the community since 2009"</p></div></div>
+        <div>
+          <span class="eyebrow rv">About Us</span>
+          <h2 class="sec-t rv d1">Why families<br>trust us</h2>
+          <p class="sec-b rv d2" style="margin-bottom:36px">Located in the heart of Kwakta Bazar, we've been serving the Imphal community for over 15 years. We believe healthcare should be accessible, personal, and warm.</p>
+          <div class="af-list">
+            <div class="af rv d2"><div class="af-ico"><i class="fas fa-hand-holding-heart"></i></div><div><div class="af-t">Personal Attention</div><div class="af-b">We take time to listen. No rushed appointments, no impersonal service.</div></div></div>
+            <div class="af rv d3"><div class="af-ico"><i class="fas fa-file-medical"></i></div><div><div class="af-t">Accurate & Fast Reports</div><div class="af-b">Precision diagnostics with detailed, easy-to-understand reports reviewed by specialists.</div></div></div>
+            <div class="af rv d4"><div class="af-ico"><i class="fas fa-wallet"></i></div><div><div class="af-t">Fair Pricing</div><div class="af-b">Quality healthcare shouldn't break the bank. Transparent pricing, no hidden costs.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="s-location" class="sec">
+      <div style="margin-bottom:56px"><span class="eyebrow rv">Visit Us</span><h2 class="sec-t rv d1">Find our clinic</h2><p class="sec-b rv d2">Easy to locate in Kwakta Bazar with convenient parking available.</p></div>
+      <div class="loc-g">
+        <div class="rv-l">
+          <div class="loc-list">
+            <div class="loc-it"><div class="loc-ico"><i class="fas fa-map-marker-alt"></i></div><div><div class="loc-lbl">Address</div><div class="loc-txt">Kwakta Bazar, Ward No. 8<br>Near Anita Standard High School<br>Imphal, Manipur 795133</div></div></div>
+            <div class="loc-it"><div class="loc-ico"><i class="fas fa-clock"></i></div><div><div class="loc-lbl">Hours</div><div class="loc-txt">Mon – Sun: 7:30 AM – 10:00 PM</div><div class="loc-acc">Ultrasound & Blood Tests: 7:00 AM – 11:00 AM only</div></div></div>
+            <div class="loc-it"><div class="loc-ico"><i class="fas fa-phone-alt"></i></div><div><div class="loc-lbl">Contact</div><div class="loc-txt">+91 98639 84852<br>oasishealthcare.in@gmail.com</div></div></div>
+          </div>
+          <div class="loc-btns">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=24.4519578,93.7327145" target="_blank" class="loc-btn lb-map"><i class="fas fa-directions"></i> Open in Google Maps</a>
+            <a href="https://wa.me/919863984852" target="_blank" class="loc-btn lb-wa"><i class="fab fa-whatsapp"></i> Share via WhatsApp</a>
+          </div>
+        </div>
+        <div class="map-w rv-r"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3631.9662046767307!2d93.7327145!3d24.451957799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x374eb547d58b793b%3A0x878e0010bbd3179c!2sOASIS%20MEDICARE!5e0!3m2!1sen!2sin!4v1769959764480!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="s-contact" class="sec" style="background:var(--cream)">
+      <div style="text-align:center;margin-bottom:52px"><span class="eyebrow rv">Book Now</span><h2 class="sec-t rv d1">Schedule your visit</h2><p class="sec-b rv d2" style="margin:0 auto;text-align:center">Fill out the form and we'll confirm your slot within 2 hours.</p></div>
+      <div class="form-c rv rv-u">
+        <div class="rp-card">
+          <div>
+            <div class="rp-eyebrow" id="profileEyebrow">Patient Login</div>
+            <h3 id="profileCardTitle">Login for a personal booking experience</h3>
+            <p id="profileCardText">Create your patient profile once, log in on this device, and your name and details will appear nicely whenever you come back.</p>
+            <div class="profile-chips" id="profileChips" style="display:none">
+              <span class="profile-chip"><i class="fas fa-user"></i><span id="chipName">Patient</span></span>
+              <span class="profile-chip"><i class="fas fa-envelope"></i><span id="chipEmail">-</span></span>
+              <span class="profile-chip"><i class="fas fa-phone"></i><span id="chipPhone">-</span></span>
+            </div>
+          </div>
+          <div class="rp-actions">
+            <button type="button" class="rp-btn primary" onclick="openAuthModal()" id="authPrimaryBtn">Patient Login</button>
+            <button type="button" class="rp-btn" onclick="fillBookingFromProfile()" id="authUseBtn" style="display:none">Use My Profile</button>
+            <button type="button" class="rp-btn" onclick="openAuthModal('create')" id="authEditBtn" style="display:none">Edit Profile</button>
+            <button type="button" class="rp-btn" onclick="logoutProfile()" id="authLogoutBtn" style="display:none">Logout</button>
+            <button type="button" class="rp-btn" onclick="clearProfile()" id="authClearBtnCard" style="display:none">Remove Profile</button>
+          </div>
+        </div>
+        <form id="bForm" action="https://formspree.io/f/xojlenpr" method="POST">
+          <div class="f-stk">
+            <div class="f-row">
+              <div class="fg"><label class="fl">Full Name *</label><input type="text" name="name" required class="fi" placeholder="Your full name"></div>
+              <div class="fg"><label class="fl">Phone *</label><input type="tel" name="phone" required pattern="[0-9]{10}" class="fi" placeholder="9876543210"></div>
+            </div>
+            <div class="fg"><label class="fl">Email</label><input type="email" name="email" class="fi" placeholder="you@example.com"></div>
+            <div class="fg"><label class="fl">Service *</label>
+              <select name="service" id="svcSel" required class="fs" onchange="updateSlots()">
+                <option value="">Choose a service…</option>
+                <option value="Ultrasound">Ultrasound (7 AM – 11 AM)</option>
+                <option value="Blood Tests">Blood Tests (7 AM – 11 AM)</option>
+                <option value="Gynaecology">Gynaecology Consultation</option>
+                <option value="General Medicine">General Medicine OPD</option>
+                <option value="Oxygen Rental">Oxygen Rental</option>
+              </select>
+            </div>
+            <div class="f-row">
+              <div class="fg"><label class="fl">Date *</label><input type="date" name="date" id="dIn" required class="fi"></div>
+              <div class="fg"><label class="fl">Time *</label>
+                <select name="time" id="tSel" required class="fs">
+                  <option value="">Select time…</option>
+                  <option>7:00 AM</option><option>7:30 AM</option><option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option><option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option>
+                </select>
+                <span class="tnote" id="tNote"><i class="fas fa-info-circle"></i> Only 7 AM – 11 AM for this service</span>
+              </div>
+            </div>
+            <div class="fg"><label class="fl">Notes (Optional)</label><textarea name="message" class="fta" placeholder="Any specific symptoms or requirements…"></textarea></div>
+            <button type="submit" id="sbBtn" class="fsb"><span>Confirm Booking</span> <i class="fas fa-paper-plane"></i></button>
+            <p class="fnote">You'll receive a confirmation call within 2 hours.</p>
+          </div>
+        </form>
+        <div id="fsucc"><div class="si"><i class="fas fa-check"></i></div><h3 class="st">Request Received!</h3><p class="sb">We'll call you shortly to confirm your appointment.</p><button class="rb" onclick="resetF()">Book Another</button></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="ft">
+        <div class="ft-g">
+          <div><div class="ft-lo"><div class="ft-li"><img src="oasis-healthcare-logo.jpeg" alt="Oasis Healthcare logo"></div><span class="ft-bn"><span class="bl">Oasis</span> <span class="rd">Healthcare</span></span></div><p class="ft-ds">Trusted medical care in Kwakta Bazar since 2009. Heal · Love · Care</p></div>
+          <div><div class="ft-ct">Timings</div><ul class="ft-ls"><li>Mon – Sun: 7:30 AM – 10:00 PM</li><li><span class="ac">Ultrasound & Blood Tests: 7:00 AM – 11:00 AM</span></li><li>Pharmacy: 7:30 AM – 10:00 PM</li></ul></div>
+          <div><div class="ft-ct">Contact</div><ul class="ft-ls"><li><i class="fas fa-phone-alt"></i>+91 98639 84852</li><li><i class="fas fa-envelope"></i>oasishealthcare.in@gmail.com</li><li><i class="fas fa-map-marker-alt"></i>Kwakta Bazar, Ward No. 8, Near Anita Standard High School, Imphal, Manipur 795133</li></ul></div>
+        </div>
+        <div class="ft-bot"><span class="ft-cp">© 2024 Oasis Healthcare. All rights reserved.</span><span class="ft-cp">Heal · Love · Care</span></div>
+      </div>
+    </footer>
+
+  </div><!-- /mc -->
+</div><!-- /home -->
+
+<!-- ═══════ SERVICE PAGES ═══════ -->
+
+<!-- ULTRASOUND -->
+<div id="p-ultra" class="page">
+  <div class="dt-hero" style="min-height:56vh">
+    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&auto=format&fit=crop" class="dt-img" alt="">
+    <div class="dt-cnt">
+      <div class="dt-meta">
+      <button class="dt-back" onclick="backSvc()"><i class="fas fa-arrow-left"></i> Back</button>
+      <span class="dt-bdg">7–11 AM</span>
+    </div>
+      <h1 class="dt-t">Ultrasound Services</h1>
+      <p class="dt-s">Clear, guided imaging for pregnancy follow-ups, abdominal concerns, pelvic scans, and routine diagnostic evaluation in a calm clinical setting.</p>
+    </div>
+  </div>
+  <div class="dt-body">
+    <div class="dt-grid">
+      <div class="dt-main">
+        <p class="dt-intro">Our ultrasound service is designed to make diagnostic imaging feel simpler and less stressful. Patients can quickly understand the scan options, know how to prepare, and feel more confident about what to expect before arriving.</p>
+        <div class="dt-kpis">
+          <div class="dt-kpi"><small>Typical slot</small><strong>15 to 30 min</strong><span>Most routine scans are completed comfortably within a short visit.</span></div>
+          <div class="dt-kpi"><small>Reports</small><strong>Same-day for many scans</strong><span>Routine reports are usually shared quickly after review.</span></div>
+          <div class="dt-kpi"><small>Best for</small><strong>Pregnancy and diagnostic imaging</strong><span>Helpful for obstetric, abdominal, pelvic, and Doppler needs.</span></div>
+        </div>
+        <div class="dt-card-grid">
+          <div class="dt-card">
+            <div class="ds-t">Scans Available</div>
+            <ul class="dl">
+              <li><i class="fas fa-check"></i>Pregnancy and obstetric scans including growth and wellbeing follow-up</li>
+              <li><i class="fas fa-check"></i>Abdominal ultrasound for liver, gall bladder, kidney, and digestive concerns</li>
+              <li><i class="fas fa-check"></i>Pelvic scans for gynecological and lower abdominal evaluation</li>
+              <li><i class="fas fa-check"></i>Thyroid and neck soft-tissue assessment</li>
+              <li><i class="fas fa-check"></i>Doppler studies when blood flow assessment is advised</li>
+              <li><i class="fas fa-check"></i>Follicular monitoring and cycle tracking support</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Before You Come</div>
+            <ul class="dl">
+              <li><i class="fas fa-glass-water"></i>A full bladder may be needed for selected pelvic scans</li>
+              <li><i class="fas fa-utensils"></i>Fasting may be advised for certain abdominal scans</li>
+              <li><i class="fas fa-file-medical"></i>Carry old reports, prescriptions, or referral notes if available</li>
+              <li><i class="fas fa-shirt"></i>Wear comfortable clothing for an easier examination</li>
+              <li><i class="fas fa-clock"></i>Arriving a little early helps with registration and preparation</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Good to Visit For</div>
+            <ul class="dl">
+              <li><i class="fas fa-baby"></i>Routine pregnancy monitoring and reassurance scans</li>
+              <li><i class="fas fa-stomach"></i>Abdominal pain, swelling, bloating, or suspected stone-related issues</li>
+              <li><i class="fas fa-venus"></i>Pelvic pain, menstrual concerns, or follow-up advised by your doctor</li>
+              <li><i class="fas fa-wave-square"></i>Requested imaging before treatment or specialist consultation</li>
+            </ul>
+          </div>
+          <div class="dt-card dt-highlight">
+            <div class="ds-t">Why Patients Choose This Service</div>
+            <p class="dt-copy">Patients choose this service because the process is straightforward, the scan types are clearly guided, and the preparation is explained in advance. It is built to feel efficient, supportive, and easy to understand from start to finish.</p>
+            <div class="chips">
+              <span class="chip"><i class="fas fa-shield-alt"></i>Radiation-free imaging</span>
+              <span class="chip"><i class="fas fa-user-doctor"></i>Guided support</span>
+              <span class="chip"><i class="fas fa-file-circle-check"></i>Easy report follow-up</span>
+            </div>
+          </div>
+          <div class="dt-card full">
+            <div class="ds-t">Frequently Asked</div>
+            <div class="dt-faq">
+              <div class="dt-faq-item"><strong>Do I need to fast?</strong><span>Only for some abdominal scans. If your doctor or staff advised fasting, plain water is usually fine unless told otherwise.</span></div>
+              <div class="dt-faq-item"><strong>How long does the scan take?</strong><span>Many scans are completed within 15 to 30 minutes, though the exact time depends on the scan type.</span></div>
+              <div class="dt-faq-item"><strong>Should I bring old reports?</strong><span>Yes. Previous scans, prescriptions, and test reports can help with comparison and better clinical context.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dt-side">
+        <div class="dt-box">
+          <div class="db-t">Quick Info</div>
+          <div class="db-r"><span class="db-k">Hours</span><span class="db-v">7:00 AM to 11:00 AM</span></div>
+          <div class="db-r"><span class="db-k">Visit time</span><span class="db-v">15 to 30 min</span></div>
+          <div class="db-r"><span class="db-k">Reports</span><span class="db-v">Routine same-day availability</span></div>
+          <div class="db-r"><span class="db-k">Days</span><span class="db-v">Mon to Sun</span></div>
+        </div>
+        <div class="dt-actions">
+          <button class="dt-cta" onclick="bookSvc('Ultrasound')"><i class="fas fa-calendar-check"></i> Book Ultrasound</button>
+          <a href="tel:+919863984852" class="dt-ghost"><i class="fas fa-phone"></i> Call Before Visiting</a>
+        </div>
+        <div class="dt-note">
+          <div class="da-t"><i class="fas fa-circle-info"></i>Helpful Note</div>
+          <div class="da-b">Preparation can vary by scan type. A quick phone confirmation before arrival can save time and make the visit smoother.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOOD TESTS -->
+<div id="p-blood" class="page">
+  <div class="dt-hero" style="min-height:56vh">
+    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1600&auto=format&fit=crop" class="dt-img" alt="">
+    <div class="dt-cnt">
+      <div class="dt-meta">
+      <button class="dt-back" onclick="backSvc()"><i class="fas fa-arrow-left"></i> Back</button>
+      <span class="dt-bdg">7–11 AM</span>
+    </div>
+      <h1 class="dt-t">Blood Testing Lab</h1>
+      <p class="dt-s">Routine and profile-based testing with a clearer service layout that explains fasting, sample timing, common panels, and report expectations.</p>
+    </div>
+  </div>
+  <div class="dt-body">
+    <div class="dt-grid">
+      <div class="dt-main">
+        <p class="dt-intro">Our blood testing service is arranged to make routine checks and follow-up monitoring easy to understand. Whether you need a fasting test, a wellness panel, or a regular review, the information below helps patients prepare properly and visit with confidence.</p>
+        <div class="dt-kpis">
+          <div class="dt-kpi"><small>Best timing</small><strong>Morning collection</strong><span>Early hours are ideal for fasting blood sugar, lipid profile, and related tests.</span></div>
+          <div class="dt-kpi"><small>Reports</small><strong>Routine results shared quickly</strong><span>Many standard tests are processed the same day.</span></div>
+          <div class="dt-kpi"><small>Support</small><strong>Home collection available</strong><span>Helpful for elderly patients, recovery cases, and convenience needs.</span></div>
+        </div>
+        <div class="dt-card-grid">
+          <div class="dt-card">
+            <div class="ds-t">Common Tests</div>
+            <ul class="dl">
+              <li><i class="fas fa-vial"></i>Complete blood count and infection-related basic workup</li>
+              <li><i class="fas fa-vial"></i>Blood sugar testing including fasting, post-meal, and HbA1c</li>
+              <li><i class="fas fa-vial"></i>Lipid profile for cholesterol and cardiac risk review</li>
+              <li><i class="fas fa-vial"></i>Liver and kidney function tests</li>
+              <li><i class="fas fa-vial"></i>Thyroid profile including T3, T4, and TSH</li>
+              <li><i class="fas fa-vial"></i>Urine routine and other doctor-advised add-on tests</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Packages and Monitoring</div>
+            <ul class="dl">
+              <li><i class="fas fa-chart-line"></i>Diabetes follow-up panels for regular monitoring</li>
+              <li><i class="fas fa-heart-pulse"></i>Heart-risk and wellness screening profiles</li>
+              <li><i class="fas fa-person-pregnant"></i>Pregnancy-related blood work when advised</li>
+              <li><i class="fas fa-sun"></i>Vitamin and deficiency testing</li>
+              <li><i class="fas fa-wave-square"></i>Hormone and specialist-requested lab panels</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Before Sample Collection</div>
+            <ul class="dl">
+              <li><i class="fas fa-ban"></i>Fasting is needed for some tests, but not for every test</li>
+              <li><i class="fas fa-glass-water"></i>Plain water is generally allowed unless advised otherwise</li>
+              <li><i class="fas fa-pills"></i>Tell the staff about regular medicines before collection</li>
+              <li><i class="fas fa-file-medical"></i>Bring your prescription or old reports for reference</li>
+            </ul>
+          </div>
+          <div class="dt-card dt-highlight">
+            <div class="ds-t">Why Patients Choose This Lab Service</div>
+            <p class="dt-copy">Patients value this lab service because preparation is simple, common test options are easy to understand, and routine reporting is handled with speed and clarity. It is a practical, patient-friendly setup for both one-time testing and regular monitoring.</p>
+            <div class="chips">
+              <span class="chip"><i class="fas fa-check-circle"></i>Routine same-day reports</span>
+              <span class="chip"><i class="fas fa-house"></i>Home collection</span>
+              <span class="chip"><i class="fas fa-user-shield"></i>Careful sample handling</span>
+            </div>
+          </div>
+          <div class="dt-card full">
+            <div class="ds-t">Frequently Asked</div>
+            <div class="dt-faq">
+              <div class="dt-faq-item"><strong>Do all blood tests need fasting?</strong><span>No. Only selected tests do. If you are unsure, call before visiting so you do not prepare unnecessarily.</span></div>
+              <div class="dt-faq-item"><strong>When should I come for fasting tests?</strong><span>The morning window is best, especially for blood sugar and lipid-related testing.</span></div>
+              <div class="dt-faq-item"><strong>Can samples be collected from home?</strong><span>Yes, home collection can be arranged for selected cases based on availability and distance.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dt-side">
+        <div class="dt-box">
+          <div class="db-t">Quick Info</div>
+          <div class="db-r"><span class="db-k">Hours</span><span class="db-v">7:00 AM to 11:00 AM</span></div>
+          <div class="db-r"><span class="db-k">Results</span><span class="db-v">Many routine tests same day</span></div>
+          <div class="db-r"><span class="db-k">Home collection</span><span class="db-v">Available on request</span></div>
+          <div class="db-r"><span class="db-k">Days</span><span class="db-v">Mon to Sun</span></div>
+        </div>
+        <div class="dt-actions">
+          <button class="dt-cta" onclick="bookSvc('Blood Tests')"><i class="fas fa-calendar-check"></i> Book Blood Test</button>
+          <a href="tel:+919863984852" class="dt-ghost"><i class="fas fa-phone"></i> Ask About Fasting</a>
+        </div>
+        <div class="dt-note">
+          <div class="da-t"><i class="fas fa-circle-info"></i>Helpful Note</div>
+          <div class="da-b">If your doctor asked for a fasting test, avoid food before the sample. Water is usually fine unless specific instructions were given.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GYNAECOLOGY -->
+<div id="p-gynae" class="page">
+  <div class="dt-hero" style="min-height:56vh">
+    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1600&auto=format&fit=crop" class="dt-img" alt="">
+    <div class="dt-cnt">
+      <div class="dt-meta">
+      <button class="dt-back" onclick="backSvc()"><i class="fas fa-arrow-left"></i> Back</button>
+      <span class="dt-bdg">7:30 AM–10 PM</span>
+    </div>
+      <h1 class="dt-t">Gynaecology and Women's Health</h1>
+      <p class="dt-s">A more polished women's health page with clearer consultation details, pregnancy-care guidance, privacy notes, and reasons to book early.</p>
+    </div>
+  </div>
+  <div class="dt-body">
+    <div class="dt-grid">
+      <div class="dt-main">
+        <p class="dt-intro">Our women's health service is designed to feel calm, respectful, and supportive from the moment a patient reads about it. The information below helps visitors understand the kind of concerns that can be discussed and the care they can expect during a consultation.</p>
+        <div class="dt-kpis">
+          <div class="dt-kpi"><small>Consultations</small><strong>Routine to follow-up care</strong><span>Suitable for first visits, regular reviews, and ongoing women's health concerns.</span></div>
+          <div class="dt-kpi"><small>Support</small><strong>Pregnancy and menstrual care</strong><span>Useful for antenatal follow-ups, cycle concerns, and hormonal symptoms.</span></div>
+          <div class="dt-kpi"><small>Experience</small><strong>Private and respectful setting</strong><span>Designed to feel calm, comfortable, and easy to talk in.</span></div>
+        </div>
+        <div class="dt-card-grid">
+          <div class="dt-card">
+            <div class="ds-t">Consultation Topics</div>
+            <ul class="dl">
+              <li><i class="fas fa-check"></i>Routine gynecological check-ups and preventive visits</li>
+              <li><i class="fas fa-check"></i>Irregular periods, pelvic discomfort, and discharge-related concerns</li>
+              <li><i class="fas fa-check"></i>PCOS, hormone-related symptoms, and cycle management</li>
+              <li><i class="fas fa-check"></i>Family planning and reproductive health counseling</li>
+              <li><i class="fas fa-check"></i>Menopause support and symptom guidance</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Pregnancy Care Support</div>
+            <ul class="dl">
+              <li><i class="fas fa-heart"></i>Early pregnancy consultation and regular follow-up visits</li>
+              <li><i class="fas fa-heart"></i>Antenatal care planning and routine monitoring advice</li>
+              <li><i class="fas fa-heart"></i>Nutrition, lifestyle, and report-review guidance</li>
+              <li><i class="fas fa-heart"></i>Postnatal follow-up and recovery discussion when needed</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">When It Is Worth Booking</div>
+            <ul class="dl">
+              <li><i class="fas fa-calendar-days"></i>Missed periods, unusual bleeding, or persistent cramps</li>
+              <li><i class="fas fa-user-doctor"></i>When you want a general women's health review</li>
+              <li><i class="fas fa-baby"></i>For pregnancy confirmation or antenatal follow-up</li>
+              <li><i class="fas fa-file-medical"></i>When earlier reports need a specialist review</li>
+            </ul>
+          </div>
+          <div class="dt-card dt-highlight">
+            <div class="ds-t">Why Patients Choose This Service</div>
+            <p class="dt-copy">Patients choose this service because it offers a private and supportive consultation experience, clear follow-up care, and a welcoming place to talk about sensitive health concerns without hesitation.</p>
+            <div class="chips">
+              <span class="chip"><i class="fas fa-lock"></i>Private consultation feel</span>
+              <span class="chip"><i class="fas fa-heart"></i>Supportive follow-up care</span>
+              <span class="chip"><i class="fas fa-hands-holding"></i>Respectful guidance</span>
+            </div>
+          </div>
+          <div class="dt-card full">
+            <div class="ds-t">Frequently Asked</div>
+            <div class="dt-faq">
+              <div class="dt-faq-item"><strong>Should I bring previous reports?</strong><span>Yes. Old prescriptions, scan reports, and blood-test results are helpful for better clinical context and follow-up planning.</span></div>
+              <div class="dt-faq-item"><strong>Can I book for a general check-up without a major problem?</strong><span>Yes. Routine women's health visits are useful even when you want reassurance, guidance, or preventive advice.</span></div>
+              <div class="dt-faq-item"><strong>Is this page only for pregnancy care?</strong><span>No. It now clearly covers routine gynecology, hormonal concerns, cycle issues, reproductive health, and pregnancy-related support.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dt-side">
+        <div class="dt-box">
+          <div class="db-t">Quick Info</div>
+          <div class="db-r"><span class="db-k">Hours</span><span class="db-v">7:30 AM to 10:00 PM</span></div>
+          <div class="db-r"><span class="db-k">Visit type</span><span class="db-v">Consultation and follow-up</span></div>
+          <div class="db-r"><span class="db-k">Suitable for</span><span class="db-v">Routine and pregnancy care</span></div>
+          <div class="db-r"><span class="db-k">Days</span><span class="db-v">Mon to Sun</span></div>
+        </div>
+        <div class="dt-actions">
+          <button class="dt-cta" onclick="bookSvc('Gynaecology')"><i class="fas fa-calendar-check"></i> Book Consultation</button>
+          <a href="tel:+919863984852" class="dt-ghost"><i class="fas fa-phone"></i> Call for Guidance</a>
+        </div>
+        <div class="dt-note">
+          <div class="da-t"><i class="fas fa-circle-info"></i>Helpful Note</div>
+          <div class="da-b">If you have recent scans or blood reports, carry them along. It makes follow-up discussions much easier and more complete.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GENERAL MEDICINE -->
+<div id="p-gen" class="page">
+  <div class="dt-hero" style="min-height:56vh">
+    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1600&auto=format&fit=crop" class="dt-img" alt="">
+    <div class="dt-cnt">
+      <div class="dt-meta">
+      <button class="dt-back" onclick="backSvc()"><i class="fas fa-arrow-left"></i> Back</button>
+      <span class="dt-bdg">7:30 AM–10 PM</span>
+    </div>
+      <h1 class="dt-t">General Medicine OPD</h1>
+      <p class="dt-s">A clearer outpatient page for everyday illness, chronic disease reviews, report-based follow-ups, and general physician consultation.</p>
+    </div>
+  </div>
+  <div class="dt-body">
+    <div class="dt-grid">
+      <div class="dt-main">
+        <p class="dt-intro">Our General Medicine OPD supports both first-time visits and regular follow-up care. It is suitable for everyday illness, report review, longer-term health conditions, and doctor guidance when you want a clear next step.</p>
+        <div class="dt-kpis">
+          <div class="dt-kpi"><small>Good for</small><strong>Everyday health concerns</strong><span>Useful for fever, cough, weakness, stomach issues, and general doctor review.</span></div>
+          <div class="dt-kpi"><small>Follow-up</small><strong>Long-term condition support</strong><span>Helpful for diabetes, blood pressure, thyroid, and respiratory care.</span></div>
+          <div class="dt-kpi"><small>Access</small><strong>Walk-ins welcome</strong><span>Easy to visit for quick consultation or scheduled OPD care.</span></div>
+        </div>
+        <div class="dt-card-grid">
+          <div class="dt-card">
+            <div class="ds-t">Common Reasons to Visit</div>
+            <ul class="dl">
+              <li><i class="fas fa-stethoscope"></i>Fever, cold, cough, body pain, and common infections</li>
+              <li><i class="fas fa-lungs"></i>Breathing discomfort, asthma review, and respiratory follow-up</li>
+              <li><i class="fas fa-bowl-food"></i>Acidity, stomach pain, loose motion, and digestion-related issues</li>
+              <li><i class="fas fa-person-rays"></i>Tiredness, weakness, dizziness, and low-energy complaints</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Chronic Care Follow-up</div>
+            <ul class="dl">
+              <li><i class="fas fa-droplet"></i>Diabetes monitoring and prescription review</li>
+              <li><i class="fas fa-heart-pulse"></i>Blood-pressure review and lifestyle counseling</li>
+              <li><i class="fas fa-notes-medical"></i>Thyroid and report-based medication adjustment follow-up</li>
+              <li><i class="fas fa-clipboard-check"></i>General wellness review after earlier testing or treatment</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">What a Visit Can Include</div>
+            <ul class="dl">
+              <li><i class="fas fa-file-medical"></i>Symptom review and report discussion</li>
+              <li><i class="fas fa-user-doctor"></i>Clinical examination and advice from the doctor</li>
+              <li><i class="fas fa-prescription-bottle-medical"></i>Treatment plan or prescription update if needed</li>
+              <li><i class="fas fa-arrow-rotate-right"></i>Follow-up planning for recovery or monitoring</li>
+            </ul>
+          </div>
+          <div class="dt-card dt-highlight">
+            <div class="ds-t">Why Patients Choose This OPD</div>
+            <p class="dt-copy">Patients choose this OPD because it covers everyday symptoms as well as ongoing care in one place. It is practical for quick consultations, report review, and treatment guidance without confusion.</p>
+            <div class="chips">
+              <span class="chip"><i class="fas fa-user-check"></i>Walk-in friendly</span>
+              <span class="chip"><i class="fas fa-file-waveform"></i>Report review support</span>
+              <span class="chip"><i class="fas fa-house-medical"></i>Daily outpatient care</span>
+            </div>
+          </div>
+          <div class="dt-card full">
+            <div class="ds-t">Frequently Asked</div>
+            <div class="dt-faq">
+              <div class="dt-faq-item"><strong>Can I visit for a simple fever or cough?</strong><span>Yes. General Medicine is suitable for everyday illness as well as regular follow-up care for ongoing health concerns.</span></div>
+              <div class="dt-faq-item"><strong>Should I bring previous reports?</strong><span>If you have recent blood tests, scans, or earlier prescriptions, bring them along for a more useful review.</span></div>
+              <div class="dt-faq-item"><strong>Is this only for chronic diseases?</strong><span>No. It covers both acute symptoms and longer-term condition management in one OPD service.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dt-side">
+        <div class="dt-box">
+          <div class="db-t">Quick Info</div>
+          <div class="db-r"><span class="db-k">Hours</span><span class="db-v">7:30 AM to 10:00 PM</span></div>
+          <div class="db-r"><span class="db-k">Walk-ins</span><span class="db-v">Welcome</span></div>
+          <div class="db-r"><span class="db-k">Follow-up</span><span class="db-v">Report and medication review</span></div>
+          <div class="db-r"><span class="db-k">Days</span><span class="db-v">Mon to Sun</span></div>
+        </div>
+        <div class="dt-actions">
+          <button class="dt-cta" onclick="bookSvc('General Medicine')"><i class="fas fa-calendar-check"></i> Book OPD Visit</button>
+          <a href="tel:+919863984852" class="dt-ghost"><i class="fas fa-phone"></i> Speak to Reception</a>
+        </div>
+        <div class="dt-note">
+          <div class="da-t"><i class="fas fa-circle-info"></i>Helpful Note</div>
+          <div class="da-b">For ongoing conditions, carrying your latest prescriptions and reports helps the doctor review progress much more quickly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OXYGEN -->
+<div id="p-oxy" class="page">
+  <div class="dt-hero" style="min-height:56vh">
+    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1600&auto=format&fit=crop" class="dt-img" alt="">
+    <div class="dt-cnt">
+      <div class="dt-meta">
+      <button class="dt-back" onclick="backSvc()"><i class="fas fa-arrow-left"></i> Back</button>
+      <span class="dt-bdg">On request</span>
+    </div>
+      <h1 class="dt-t">Oxygen Rental Services</h1>
+      <p class="dt-s">Home-care oxygen support with clearer details on available equipment, setup help, prescription requirements, and safe-use guidance.</p>
+    </div>
+  </div>
+  <div class="dt-body">
+    <div class="dt-grid">
+      <div class="dt-main">
+        <p class="dt-intro">Our oxygen rental service is planned for families who need reliable home-care support with less confusion. The information below explains equipment options, required documents, and the safety steps that matter before arranging a rental.</p>
+        <div class="dt-kpis">
+          <div class="dt-kpi"><small>Options</small><strong>Cylinders and concentrators</strong><span>Suitable for short-term need as well as longer home-care support.</span></div>
+          <div class="dt-kpi"><small>Support</small><strong>Delivery and setup help</strong><span>Assistance includes installation guidance and usage guidance.</span></div>
+          <div class="dt-kpi"><small>Requirement</small><strong>Prescription needed</strong><span>Medical oxygen is provided only with proper doctor advice and documentation.</span></div>
+        </div>
+        <div class="dt-card-grid">
+          <div class="dt-card">
+            <div class="ds-t">Available Equipment</div>
+            <ul class="dl">
+              <li><i class="fas fa-check"></i>B-type portable cylinder for shorter mobility-focused needs</li>
+              <li><i class="fas fa-check"></i>D-type cylinder for longer backup duration</li>
+              <li><i class="fas fa-check"></i>5 LPM and 10 LPM oxygen concentrator options</li>
+              <li><i class="fas fa-check"></i>Required accessories such as regulator, flowmeter, tubing, and humidifier support</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Rental Support Included</div>
+            <ul class="dl">
+              <li><i class="fas fa-truck"></i>Delivery based on location and availability</li>
+              <li><i class="fas fa-screwdriver-wrench"></i>Basic setup assistance at handover</li>
+              <li><i class="fas fa-arrows-rotate"></i>Refill coordination for cylinder-based rentals</li>
+              <li><i class="fas fa-headset"></i>Help for troubleshooting and use-related questions</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Documents and Safety</div>
+            <ul class="dl">
+              <li><i class="fas fa-file-prescription"></i>Doctor prescription is mandatory before issue</li>
+              <li><i class="fas fa-id-card"></i>ID proof and basic rental details may be required</li>
+              <li><i class="fas fa-shield-alt"></i>Keep equipment upright and away from open flame or smoke</li>
+              <li><i class="fas fa-gauge-high"></i>Use only the oxygen flow advised by the doctor</li>
+            </ul>
+          </div>
+          <div class="dt-card dt-highlight">
+            <div class="ds-t">Why Families Choose This Service</div>
+            <p class="dt-copy">Families choose this service because it clearly explains the available equipment, provides setup support, and makes the rental process easier to understand during urgent or recovery-related situations.</p>
+            <div class="chips">
+              <span class="chip"><i class="fas fa-house"></i>Home-care ready</span>
+              <span class="chip"><i class="fas fa-toolbox"></i>Setup guidance</span>
+              <span class="chip"><i class="fas fa-phone-volume"></i>Availability by call</span>
+            </div>
+          </div>
+          <div class="dt-card full">
+            <div class="ds-t">Frequently Asked</div>
+            <div class="dt-faq">
+              <div class="dt-faq-item"><strong>What is the difference between a cylinder and a concentrator?</strong><span>A cylinder stores oxygen for use until it empties, while a concentrator generates oxygen continuously from room air when powered.</span></div>
+              <div class="dt-faq-item"><strong>Is setup support provided?</strong><span>Yes. Basic usage guidance and setup support are part of the rental experience so the family can use the equipment more confidently.</span></div>
+              <div class="dt-faq-item"><strong>Can I get oxygen without a prescription?</strong><span>No. A prescription is required for safety and proper medical use.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dt-side">
+        <div class="dt-box">
+          <div class="db-t">Quick Info</div>
+          <div class="db-r"><span class="db-k">Availability</span><span class="db-v">On request</span></div>
+          <div class="db-r"><span class="db-k">Delivery</span><span class="db-v">Based on area and stock</span></div>
+          <div class="db-r"><span class="db-k">Prescription</span><span class="db-v">Mandatory</span></div>
+          <div class="db-r"><span class="db-k">Support</span><span class="db-v">Setup guidance included</span></div>
+        </div>
+        <div class="dt-actions">
+          <a href="tel:+919863984852" class="dt-cta"><i class="fas fa-phone"></i> Call for Availability</a>
+          <button class="dt-ghost" onclick="bookSvc('Oxygen Rental')"><i class="fas fa-calendar-check"></i> Send Rental Request</button>
+        </div>
+        <div class="dt-note">
+          <div class="da-t"><i class="fas fa-circle-info"></i>Helpful Note</div>
+          <div class="da-b">Keep your doctor's prescription ready before calling. It makes availability checks and issue formalities much faster.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHARMACY -->
+<div id="p-pharm" class="page">
+  <div class="dt-hero" style="min-height:56vh">
+    <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=1600&auto=format&fit=crop" class="dt-img" alt="">
+    <div class="dt-cnt">
+      <div class="dt-meta">
+      <button class="dt-back" onclick="backSvc()"><i class="fas fa-arrow-left"></i> Back</button>
+      <span class="dt-bdg">7:30 AM–10 PM</span>
+    </div>
+      <h1 class="dt-t">In-House Pharmacy</h1>
+      <p class="dt-s">A more polished pharmacy page covering medicine categories, refill support, delivery convenience, and prescription-related guidance.</p>
+    </div>
+  </div>
+  <div class="dt-body">
+    <div class="dt-grid">
+      <div class="dt-main">
+        <p class="dt-intro">Our in-house pharmacy is built for day-to-day convenience, whether you need regular medicines, a quick refill, or support with a nearby home delivery request. Patients can easily understand what is available and how to order.</p>
+        <div class="dt-kpis">
+          <div class="dt-kpi"><small>Service window</small><strong>Open daily</strong><span>Designed for routine medicine pickup as well as urgent daily needs.</span></div>
+          <div class="dt-kpi"><small>Convenience</small><strong>Call before pickup</strong><span>Helpful when you want your order prepared before arrival.</span></div>
+          <div class="dt-kpi"><small>Support</small><strong>Delivery and guidance</strong><span>Medication access is paired with basic usage support when needed.</span></div>
+        </div>
+        <div class="dt-card-grid">
+          <div class="dt-card">
+            <div class="ds-t">Medicine and Product Categories</div>
+            <ul class="dl">
+              <li><i class="fas fa-capsules"></i>Routine prescription medicines for common and long-term conditions</li>
+              <li><i class="fas fa-capsules"></i>Diabetes, blood-pressure, and thyroid-related medicines</li>
+              <li><i class="fas fa-capsules"></i>Pain-relief, fever-care, and recovery support products</li>
+              <li><i class="fas fa-capsules"></i>Baby-care, nutrition, and selected personal healthcare essentials</li>
+              <li><i class="fas fa-capsules"></i>Supplements, wellness items, and basic supportive products</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Helpful Pharmacy Services</div>
+            <ul class="dl">
+              <li><i class="fas fa-phone"></i>Order by phone and collect when ready</li>
+              <li><i class="fas fa-motorcycle"></i>Home delivery for nearby areas based on order and distance</li>
+              <li><i class="fas fa-user-nurse"></i>Basic medicine-use guidance and dosage clarification</li>
+              <li><i class="fas fa-repeat"></i>Refill support for regular monthly medicines</li>
+            </ul>
+          </div>
+          <div class="dt-card">
+            <div class="ds-t">Best For</div>
+            <ul class="dl">
+              <li><i class="fas fa-briefcase-medical"></i>Quick pickup after consultation or follow-up visit</li>
+              <li><i class="fas fa-house-medical"></i>Regular household medicine needs and chronic-care refills</li>
+              <li><i class="fas fa-person-cane"></i>Elderly or family medicine delivery support when possible</li>
+              <li><i class="fas fa-file-prescription"></i>Prescription-based purchases where documents are required</li>
+            </ul>
+          </div>
+          <div class="dt-card dt-highlight">
+            <div class="ds-t">Why Patients Choose This Pharmacy</div>
+            <p class="dt-copy">Patients choose this pharmacy because it combines daily convenience with helpful guidance. It is useful for regular refills, family medicine needs, and nearby delivery support when a trip to the store is difficult.</p>
+            <div class="chips">
+              <span class="chip"><i class="fas fa-bag-shopping"></i>Daily medicine access</span>
+              <span class="chip"><i class="fas fa-truck"></i>Nearby delivery</span>
+              <span class="chip"><i class="fas fa-file-prescription"></i>Prescription-aware service</span>
+            </div>
+          </div>
+          <div class="dt-card full">
+            <div class="ds-t">Frequently Asked</div>
+            <div class="dt-faq">
+              <div class="dt-faq-item"><strong>Can I call before coming?</strong><span>Yes. Calling ahead makes pickup easier, especially for regular medicines or larger orders.</span></div>
+              <div class="dt-faq-item"><strong>Do all medicines need a prescription?</strong><span>No, but prescription medicines and scheduled drugs require valid doctor documentation as per regulations.</span></div>
+              <div class="dt-faq-item"><strong>Is delivery available?</strong><span>Delivery support is available for nearby areas based on the order and practical availability.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dt-side">
+        <div class="dt-box">
+          <div class="db-t">Quick Info</div>
+          <div class="db-r"><span class="db-k">Hours</span><span class="db-v">7:30 AM to 10:00 PM</span></div>
+          <div class="db-r"><span class="db-k">Walk-ins</span><span class="db-v">Welcome</span></div>
+          <div class="db-r"><span class="db-k">Delivery</span><span class="db-v">Nearby area support</span></div>
+          <div class="db-r"><span class="db-k">Days</span><span class="db-v">Mon to Sun</span></div>
+        </div>
+        <div class="dt-actions">
+          <a href="tel:+919863984852" class="dt-cta"><i class="fas fa-phone"></i> Call Pharmacy</a>
+          <a href="#s-contact" class="dt-ghost" onclick="goHome();setTimeout(()=>{const el=document.getElementById('s-contact');if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-72,behavior:'smooth'});},160)"><i class="fas fa-paper-plane"></i> Ask a Question</a>
+        </div>
+        <div class="dt-note">
+          <div class="da-t"><i class="fas fa-circle-info"></i>Helpful Note</div>
+          <div class="da-b">Keep your prescription ready for regulated medicines. Calling ahead is useful when you need a refill prepared quickly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="profile-toast" id="profileToast" aria-live="polite" aria-atomic="true">
+  <div class="profile-toast-icon" id="profileToastIcon">P</div>
+  <div class="profile-toast-copy">
+    <small id="profileToastLabel">Patient Login</small>
+    <strong id="profileToastName">Patient</strong>
+    <span id="profileToastText">Your profile is ready to use.</span>
+  </div>
+</div>
+
+<script>
+/* ── ROUTER ── */
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById(id);
+  if(pg){
+    pg.classList.add('active');
+    window.scrollTo(0,0);
+    if(id==='home'){
+      setTimeout(initReveal,80);
+    }else if(id.startsWith('p-')){
+      prepServicePage(pg);
+    }
+  }
+  closeMob();
+  const img=pg&&pg.querySelector('.dt-img');
+  if(img){img.classList.remove('ld');setTimeout(()=>img.classList.add('ld'),80)}
+}
+function goHome(){goPage('home');setTimeout(initReveal,80)}
+function goSec(id){
+  goPage('home');
+  setTimeout(()=>{
+    const el=document.getElementById(id);
+    if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-72,behavior:'smooth'});
+  },120);
+  setTimeout(initReveal,80);
+}
+function backSvc(){
+  goPage('home');
+  setTimeout(()=>{
+    const el=document.getElementById('s-services');
+    if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-72,behavior:'smooth'});
+  },120);
+  setTimeout(initReveal,80);
+}
+function bookSvc(name){
+  goPage('home');
+  setTimeout(()=>{
+    const sel=document.getElementById('svcSel');
+    if(sel){for(let o of sel.options)if(o.value===name){sel.value=name;updateSlots();break}}
+    const el=document.getElementById('s-contact');
+    if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-72,behavior:'smooth'});
+  },160);
+  setTimeout(initReveal,80);
+}
+
+/* ── MOBILE MENU ── */
+let mob=false;
+function toggleMob(){mob=!mob;document.getElementById('mob').style.display=mob?'block':'none';document.getElementById('hico').className=mob?'fas fa-times':'fas fa-bars'}
+function closeMob(){mob=false;document.getElementById('mob').style.display='none';document.getElementById('hico').className='fas fa-bars'}
+document.addEventListener('click',e=>{if(!e.target.closest('#tnav')&&!e.target.closest('#mob'))closeMob()});
+
+/* ── HERO WORD SPLIT ── */
+function buildHero(){
+  const c=document.getElementById('htitle');
+  if(!c)return;c.innerHTML='';
+  const words=[{t:'Healthcare',br:false},{t:'that',br:false},{t:'feels',br:false},{t:'like',br:true},{t:'<em>home</em>',br:false}];
+  words.forEach((w,i)=>{
+    if(w.br){const br=document.createElement('br');c.appendChild(br)}
+    const sp=document.createElement('span');sp.className='sw';sp.innerHTML=w.t+(i<words.length-1?'\u00A0':'');
+    sp.style.transitionDelay=(0.04+i*0.1)+'s';c.appendChild(sp);
+  });
+  setTimeout(()=>{
+    c.querySelectorAll('.sw').forEach(s=>s.classList.add('in'));
+    document.getElementById('hsub')?.classList.add('in');
+    document.getElementById('hacts')?.classList.add('in');
+    document.getElementById('hstats')?.classList.add('in');
+    document.getElementById('heroPhoto')?.classList.add('in');
+    document.getElementById('heroInfoCard')?.classList.add('in');
+  },80);
+}
+
+/* ── COUNT-UP ── */
+let cDone=false;
+function runCounters(){
+  if(cDone)return;cDone=true;
+  document.querySelectorAll('.cnt').forEach(el=>{
+    const tgt=+el.dataset.t;let cur=0;
+    const dur=1400,step=Math.max(dur/tgt,20);
+    const t=setInterval(()=>{cur++;el.textContent=cur;if(cur>=tgt)clearInterval(t)},step);
+  });
+}
+
+/* ── SCROLL REVEAL + SIDENAV ── */
+const SECS=['s-hero','s-services','s-tip','s-testimonials','s-about','s-location','s-contact'];
+function initReveal(){
+  const rvEls=document.querySelectorAll('#home .rv,#home .rv-l,#home .rv-r,#home .rv-u');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+  },{threshold:0.1,rootMargin:'0px 0px -55px 0px'});
+  rvEls.forEach(el=>obs.observe(el));
+
+  // About image scale reveal
+  const aw=document.getElementById('aImgW');
+  if(aw){const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:0.2});io.observe(aw)}
+
+  // Section active sidenav + counters
+  const secObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id;
+        document.querySelectorAll('.sn-a').forEach(a=>a.classList.toggle('active',a.dataset.s===id));
+        if(id==='s-hero')setTimeout(runCounters,600);
+      }
+    });
+  },{threshold:0.3});
+  SECS.forEach(id=>{const el=document.getElementById(id);if(el)secObs.observe(el)});
+}
+
+/* ── HEALTH TIPS ── */
+const TIPS=[
+  {focus:'Hydration Focus',txt:'"Stay hydrated throughout the day. Drinking adequate water supports all bodily functions, improves energy levels, and helps maintain healthy skin."',summary:'Small daily habits make a big difference. Consistent hydration supports circulation, digestion, and steady energy through the day.',why:'Hydration is one of the easiest habits to improve and it supports comfort, focus, and healthy body function throughout the day.',nm:'Dr. Sarah Johnson',rl:'Chief Medical Officer',img:'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80'},
+  {focus:'Nutrition Balance',txt:'"Prioritize balanced nutrition with fruits, vegetables, whole grains, and lean proteins. A colorful plate often means a meal rich in protective nutrients."',summary:'Balanced meals help maintain strength, stable energy, and better recovery while reducing the temptation to skip nutrition during busy days.',why:'When meals are balanced, the body gets more consistent fuel for immunity, healing, concentration, and everyday comfort.',nm:'Dr. Michael Chen',rl:'Nutrition Specialist',img:'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop'},
+  {focus:'Sleep Quality',txt:'"Ensure 7 to 8 hours of quality sleep each night. Proper rest is essential for immune function, mental clarity, mood balance, and overall wellbeing."',summary:'A strong sleep routine supports memory, stress recovery, and better energy the next day, which improves daily functioning and long-term health.',why:'Sleep is a recovery system for the whole body, so improving it can positively affect focus, mood, immunity, and blood pressure.',nm:'Dr. Priya Sharma',rl:'Sleep Medicine Expert',img:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop'},
+  {focus:'Hygiene Protection',txt:'"Practice good hand hygiene regularly. Proper handwashing remains one of the most effective ways to prevent the spread of common illnesses."',summary:'Clean hands help protect both the individual and the family, especially during travel, meals, clinic visits, and seasonal infections.',why:'This advice is simple, low-cost, and powerful, making it one of the easiest ways to reduce everyday infection risk.',nm:'Dr. Robert Kim',rl:'Infectious Disease Specialist',img:'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop'},
+];
+let ti=0;
+let tipAutoTimer;
+function renderTipDots(){
+  const wrap=document.getElementById('tipDots');
+  if(!wrap) return;
+  wrap.innerHTML=TIPS.map((_,i)=>`<button type="button" class="tip-dot ${i===0?'active':''}" onclick="goToTip(${i})" aria-label="Show tip ${i+1}"></button>`).join('');
+}
+function resetTipProgress(){
+  const bar=document.getElementById('tipBar');
+  if(!bar) return;
+  bar.style.transition='none';
+  bar.style.width='0';
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      bar.style.transition='width 8.8s linear';
+      bar.style.width='100%';
+    });
+  });
+}
+function scheduleTipAdvance(){
+  clearTimeout(tipAutoTimer);
+  tipAutoTimer=setTimeout(()=>{nextTip(false)},9000);
+}
+function animateTipSwap(){
+  ['tipTxt','tipSummary','tipWhy','tipFocus'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.classList.remove('tip-swap-in');
+    void el.offsetWidth;
+    el.classList.add('tip-swap-in');
+  });
+  const img=document.getElementById('tipImg');
+  if(img){
+    img.classList.remove('tip-image-in');
+    void img.offsetWidth;
+    img.classList.add('tip-image-in');
+  }
+  restartAnim(document.getElementById('tipShell'),'tip-card-shimmer');
+}
+function setTip(index,{animate=true}={}){
+  ti=(index+TIPS.length)%TIPS.length;
+  const tip=TIPS[ti];
+  const txt=document.getElementById('tipTxt');
+  const summary=document.getElementById('tipSummary');
+  const why=document.getElementById('tipWhy');
+  const focus=document.getElementById('tipFocus');
+  const nm=document.getElementById('tipNm');
+  const rl=document.getElementById('tipRl');
+  const img=document.getElementById('tipImg');
+  if(txt) txt.textContent=tip.txt;
+  if(summary) summary.textContent=tip.summary;
+  if(why) why.textContent=tip.why;
+  if(focus) focus.innerHTML=`<i class="fas fa-heart-pulse"></i> ${tip.focus}`;
+  if(nm) nm.textContent=tip.nm;
+  if(rl) rl.textContent=tip.rl;
+  if(img){ img.src=tip.img; img.alt=tip.nm; }
+  document.querySelectorAll('.tip-dot').forEach((dot,i)=>dot.classList.toggle('active',i===ti));
+  resetTipProgress();
+  if(animate) animateTipSwap();
+}
+function goToTip(index){ setTip(index); scheduleTipAdvance(); }
+function nextTip(manual=true){ setTip(ti+1); scheduleTipAdvance(); }
+function prevTip(){ setTip(ti-1); scheduleTipAdvance(); }
+renderTipDots();
+setTip(0,{animate:false});
+scheduleTipAdvance();
+
+
+
+
+/* ── EXTRA PAGE ANIMATIONS ── */
+let svcMotionObserver;
+function markServiceRevealTargets(){
+  document.querySelectorAll('[id^="p-"] .dt-kpi,[id^="p-"] .dt-card,[id^="p-"] .dt-box,[id^="p-"] .dt-note,[id^="p-"] .dt-faq-item,[id^="p-"] .dt-actions .dt-cta,[id^="p-"] .dt-actions .dt-ghost').forEach((el,i)=>{
+    el.classList.add('svc-reveal');
+    el.style.transitionDelay=`${Math.min(.08 + (i % 6) * .07,.46)}s`;
+  });
+}
+function initServiceMotionObserver(scope=document){
+  if(svcMotionObserver) svcMotionObserver.disconnect();
+  svcMotionObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        svcMotionObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  scope.querySelectorAll('.svc-reveal').forEach(el=>svcMotionObserver.observe(el));
+}
+function prepServicePage(pg){
+  if(!pg) return;
+  document.querySelectorAll('[id^="p-"]').forEach(page=>page.classList.remove('service-ready'));
+  pg.classList.remove('service-ready');
+  pg.querySelectorAll('.svc-reveal').forEach((el,i)=>{
+    el.classList.remove('in');
+    el.style.transitionDelay=`${Math.min(.08 + (i % 6) * .07,.46)}s`;
+  });
+  void pg.offsetWidth;
+  pg.classList.add('service-ready');
+  initServiceMotionObserver(pg);
+}
+function initExtraHighlights(){
+  markServiceRevealTargets();
+  initServiceMotionObserver(document);
+}
+
+/* ── PATIENT LOGIN + PROFILE ── */
+const PROFILE_KEY='oasisPatientProfile';
+const SESSION_KEY='oasisPatientLoggedIn';
+let profileToastTimer;
+function getBookingField(name){return document.querySelector(`#bForm [name="${name}"]`)}
+function getProfile(){
+  try{return JSON.parse(localStorage.getItem(PROFILE_KEY) || 'null')}catch{return null}
+}
+function isLoggedIn(){return localStorage.getItem(SESSION_KEY)==='true'}
+function getInitial(name){return (name||'P').trim().charAt(0).toUpperCase() || 'P'}
+function hasProfile(){
+  const p=getProfile();
+  return !!(p && (p.name || p.email || p.phone || p.pin));
+}
+function restartAnim(el,cls){
+  if(!el) return;
+  el.classList.remove(cls);
+  void el.offsetWidth;
+  el.classList.add(cls);
+  setTimeout(()=>el.classList.remove(cls),900);
+}
+function showProfileToast(type='login',profile=getProfile()){
+  const toast=document.getElementById('profileToast');
+  if(!toast || !profile) return;
+  const label=document.getElementById('profileToastLabel');
+  const name=document.getElementById('profileToastName');
+  const text=document.getElementById('profileToastText');
+  const icon=document.getElementById('profileToastIcon');
+  const messages={
+    create:{label:'Profile Created',text:'You are now logged in and your profile is live on this device.'},
+    login:{label:'Logged In',text:'Welcome back. Your profile is now visible and ready for faster booking.'},
+    update:{label:'Profile Updated',text:'Your latest details are saved and shown across the site.'}
+  };
+  const current=messages[type] || messages.login;
+  label.textContent=current.label;
+  name.textContent=profile.name || 'Patient';
+  text.textContent=current.text;
+  icon.textContent=getInitial(profile.name);
+  clearTimeout(profileToastTimer);
+  toast.classList.remove('show');
+  void toast.offsetWidth;
+  toast.classList.add('show');
+  profileToastTimer=setTimeout(()=>toast.classList.remove('show'),2800);
+}
+function animateProfileExperience(type='login'){
+  const profile=getProfile();
+  restartAnim(document.getElementById('navProfileShell'),'profile-enter');
+  restartAnim(document.querySelector('.tn-profile-btn'),'profile-enter');
+  restartAnim(document.getElementById('navAvatar'),'avatar-pop');
+  restartAnim(document.querySelector('.rp-card'),'profile-highlight');
+  showProfileToast(type,profile);
+}
+function setAuthMode(mode='create'){
+  const profile=getProfile() || {};
+  const tabs=document.getElementById('authTabs');
+  const createView=document.getElementById('createView');
+  const loginView=document.getElementById('loginView');
+  const profileView=document.getElementById('profileView');
+  const createTab=document.getElementById('createTab');
+  const loginTab=document.getElementById('loginTab');
+  const title=document.getElementById('authTitle');
+  const subtitle=document.getElementById('authSubtitle');
+  const clearBtn=document.getElementById('modalClearProfileBtn');
+
+  [createView,loginView,profileView].forEach(v=>v.classList.remove('active'));
+  [createTab,loginTab].forEach(v=>v.classList.remove('active'));
+
+  if(mode==='profile' && isLoggedIn() && hasProfile()){
+    tabs.style.display='none';
+    profileView.classList.add('active');
+    title.textContent='My Profile';
+    subtitle.textContent='Your login is active on this device and your profile is ready to use.';
+    document.getElementById('profileAvatarLarge').textContent=getInitial(profile.name);
+    document.getElementById('profileNameLarge').textContent=profile.name || 'Patient';
+    document.getElementById('profileNameItem').textContent=profile.name || '-';
+    document.getElementById('profileEmailItem').textContent=profile.email || '-';
+    document.getElementById('profilePhoneItem').textContent=profile.phone || '-';
+    return;
+  }
+
+  tabs.style.display='grid';
+  if(mode==='login'){
+    loginView.classList.add('active');
+    loginTab.classList.add('active');
+    title.textContent='Patient Login';
+    subtitle.textContent='Log in to show your profile and use your saved booking details.';
+    document.getElementById('authWelcome').innerHTML=`<i class="fas fa-user-check"></i><span>${profile.name ? 'Welcome back, ' + profile.name + '. ' : ''}Log in to continue.</span>`;
+    document.getElementById('loginEmail').value=profile.email || '';
+    document.getElementById('loginPin').value='';
+    clearBtn.style.display=hasProfile() ? 'inline-flex' : 'none';
+  }else{
+    createView.classList.add('active');
+    createTab.classList.add('active');
+    title.textContent=hasProfile() ? 'Edit Patient Profile' : 'Create Patient Profile';
+    subtitle.textContent=hasProfile() ? 'Update the details shown in your profile and login experience.' : 'Create a simple patient profile, log in on this device, and show your name beautifully across the website.';
+    document.getElementById('authName').value=profile.name || '';
+    document.getElementById('authPhone').value=profile.phone || '';
+    document.getElementById('authEmail').value=profile.email || '';
+    document.getElementById('authPin').value=profile.pin || '';
+    document.getElementById('saveProfileBtn').textContent=hasProfile() ? 'Save Profile Changes' : 'Create Profile & Login';
+  }
+}
+function openAuthModal(mode){
+  const modal=document.getElementById('authModal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  if(mode==='profile' && isLoggedIn() && hasProfile()){
+    setAuthMode('profile');
+  }else if(mode==='create'){
+    setAuthMode('create');
+  }else{
+    setAuthMode(hasProfile() ? 'login' : 'create');
+  }
+  setTimeout(()=>{
+    const active=document.querySelector('#authModal .auth-view.active input');
+    active?.focus();
+  },30);
+}
+function closeAuthModal(){
+  const modal=document.getElementById('authModal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+}
+function validateProfile(data){
+  if(!data.name) return 'Please enter your full name.';
+  if(!data.phone || !/^\d{10}$/.test(data.phone)) return 'Please enter a valid 10 digit phone number.';
+  if(!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return 'Please enter a valid email address.';
+  if(!data.pin || !/^\d{4}$/.test(data.pin)) return 'Please create a 4 digit PIN.';
+  return '';
+}
+function createOrUpdateProfile(){
+  const hadProfile=hasProfile();
+  const data={
+    name:document.getElementById('authName').value.trim(),
+    phone:document.getElementById('authPhone').value.trim(),
+    email:document.getElementById('authEmail').value.trim().toLowerCase(),
+    pin:document.getElementById('authPin').value.trim()
+  };
+  const error=validateProfile(data);
+  if(error){alert(error);return;}
+  localStorage.setItem(PROFILE_KEY,JSON.stringify(data));
+  localStorage.setItem(SESSION_KEY,'true');
+  syncProfileUI();
+  fillBookingFromProfile();
+  closeAuthModal();
+  setTimeout(()=>animateProfileExperience(hadProfile ? 'update' : 'create'),120);
+}
+function loginProfile(){
+  const profile=getProfile();
+  if(!profile){alert('Please create a profile first.');setAuthMode('create');return;}
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pin=document.getElementById('loginPin').value.trim();
+  if(email===String(profile.email || '').toLowerCase() && pin===String(profile.pin || '')){
+    localStorage.setItem(SESSION_KEY,'true');
+    syncProfileUI();
+    fillBookingFromProfile();
+    closeAuthModal();
+    setTimeout(()=>animateProfileExperience('login'),120);
+  }else{
+    alert('Email or PIN is incorrect.');
+  }
+}
+function logoutProfile(){
+  localStorage.removeItem(SESSION_KEY);
+  syncProfileUI();
+  closeAuthModal();
+}
+function clearProfile(){
+  localStorage.removeItem(PROFILE_KEY);
+  localStorage.removeItem(SESSION_KEY);
+  syncProfileUI();
+  closeAuthModal();
+}
+function fillBookingFromProfile(){
+  const profile=getProfile();
+  if(!profile || !isLoggedIn()) return;
+  const name=getBookingField('name');
+  const phone=getBookingField('phone');
+  const email=getBookingField('email');
+  if(name && profile.name) name.value=profile.name;
+  if(phone && profile.phone) phone.value=profile.phone;
+  if(email && profile.email) email.value=profile.email;
+}
+function syncProfileUI(){
+  const profile=getProfile();
+  const loggedIn=isLoggedIn() && hasProfile();
+  const navAuthBtn=document.getElementById('navAuthBtn');
+  const navProfileShell=document.getElementById('navProfileShell');
+  const navProfileName=document.getElementById('navProfileName');
+  const navAvatar=document.getElementById('navAvatar');
+  const mobLoginLink=document.getElementById('mobLoginLink');
+  const mobProfileLink=document.getElementById('mobProfileLink');
+  const mobProfileName=document.getElementById('mobProfileName');
+  const primaryBtn=document.getElementById('authPrimaryBtn');
+  const useBtn=document.getElementById('authUseBtn');
+  const editBtn=document.getElementById('authEditBtn');
+  const logoutBtn=document.getElementById('authLogoutBtn');
+  const clearBtn=document.getElementById('authClearBtnCard');
+  const cardTitle=document.getElementById('profileCardTitle');
+  const cardText=document.getElementById('profileCardText');
+  const eyebrow=document.getElementById('profileEyebrow');
+  const chips=document.getElementById('profileChips');
+
+  if(profile){
+    document.getElementById('chipName').textContent=profile.name || 'Patient';
+    document.getElementById('chipEmail').textContent=profile.email || '-';
+    document.getElementById('chipPhone').textContent=profile.phone || '-';
+  }
+
+  if(loggedIn){
+    navAuthBtn.style.display='none';
+    navProfileShell.style.display='flex';
+    navProfileName.textContent=profile.name || 'Patient';
+    navAvatar.textContent=getInitial(profile.name);
+    mobLoginLink.style.display='none';
+    mobProfileLink.style.display='block';
+    mobProfileName.textContent=profile.name || 'Patient';
+    eyebrow.textContent='My Profile';
+    cardTitle.textContent=`Hello, ${profile.name || 'Patient'}`;
+    cardText.textContent='You are logged in on this device. Your profile is ready to use for faster appointment booking.';
+    chips.style.display='flex';
+    primaryBtn.textContent='Open My Profile';
+    primaryBtn.onclick=()=>openAuthModal('profile');
+    useBtn.style.display='inline-flex';
+    editBtn.style.display='inline-flex';
+    logoutBtn.style.display='inline-flex';
+    clearBtn.style.display='none';
+  }else if(hasProfile()){
+    navAuthBtn.style.display='inline-flex';
+    navAuthBtn.textContent='Patient Login';
+    navProfileShell.style.display='none';
+    mobLoginLink.style.display='block';
+    mobProfileLink.style.display='none';
+    eyebrow.textContent='Saved Profile';
+    cardTitle.textContent=`Welcome back${profile?.name ? ', ' + profile.name : ''}`;
+    cardText.textContent='Your profile is saved on this device. Log in to show your name and use your saved details for booking.';
+    chips.style.display='flex';
+    primaryBtn.textContent='Login';
+    primaryBtn.onclick=()=>openAuthModal('login');
+    useBtn.style.display='none';
+    editBtn.style.display='inline-flex';
+    logoutBtn.style.display='none';
+    clearBtn.style.display='inline-flex';
+  }else{
+    navAuthBtn.style.display='inline-flex';
+    navAuthBtn.textContent='Patient Login';
+    navProfileShell.style.display='none';
+    mobLoginLink.style.display='block';
+    mobProfileLink.style.display='none';
+    eyebrow.textContent='Patient Login';
+    cardTitle.textContent='Login for a personal booking experience';
+    cardText.textContent='Create your patient profile once, log in on this device, and your name and details will appear nicely whenever you come back.';
+    chips.style.display='none';
+    primaryBtn.textContent='Create Profile';
+    primaryBtn.onclick=()=>openAuthModal('create');
+    useBtn.style.display='none';
+    editBtn.style.display='none';
+    logoutBtn.style.display='none';
+    clearBtn.style.display='none';
+  }
+}
+
+/* ── FORM ── */
+const dIn=document.getElementById('dIn');
+if(dIn)dIn.min=new Date().toISOString().split('T')[0];
+function updateSlots(){
+  const svc=document.getElementById('svcSel').value;
+  const note=document.getElementById('tNote');
+  const ts=document.getElementById('tSel');
+  const early=['Ultrasound','Blood Tests'];
+  const pm=['12:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM','8:00 PM'];
+  note.style.display=early.includes(svc)?'block':'none';
+  for(let o of ts.options)o.disabled=early.includes(svc)&&pm.includes(o.value);
+  if(ts.options[ts.selectedIndex]?.disabled)ts.value='';
+}
+const bForm=document.getElementById('bForm');
+if(bForm)bForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=document.getElementById('sbBtn');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending…';btn.disabled=true;
+  try{
+    const res=await fetch(bForm.action,{method:'POST',body:new FormData(bForm),headers:{'Accept':'application/json'}});
+    if(res.ok){
+      if(isLoggedIn() && hasProfile()){fillBookingFromProfile();}
+      bForm.style.display='none';document.getElementById('fsucc').style.display='block'
+    }else throw new Error();
+  }catch{alert('Error. Call us: +91 98639 84852');btn.innerHTML='<span>Confirm Booking</span> <i class="fas fa-paper-plane"></i>';btn.disabled=false}
+});
+function resetF(){document.getElementById('bForm').reset();fillBookingFromProfile();document.getElementById('bForm').style.display='block';document.getElementById('fsucc').style.display='none';const b=document.getElementById('sbBtn');b.innerHTML='<span>Confirm Booking</span> <i class="fas fa-paper-plane"></i>';b.disabled=false}
+
+/* ── INIT ── */
+window.addEventListener('DOMContentLoaded',()=>{buildHero();initReveal();initExtraHighlights();syncProfileUI();fillBookingFromProfile();});
+document.getElementById('authModal')?.addEventListener('click',e=>{if(e.target.id==='authModal')closeAuthModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAuthModal()});
+</script>
+
+<script>
+function goHome(){ window.location.href = 'index.html'; }
+function goSec(id){ window.location.href = 'index.html#' + id; }
+function backSvc(){ window.location.href = 'index.html#s-services'; }
+function bookSvc(name){ window.location.href = 'index.html?service=' + encodeURIComponent(name) + '#s-contact'; }
+window.addEventListener('DOMContentLoaded',()=>{
+  if(typeof goPage === 'function') goPage('p-pharm');
+  const hash = window.location.hash;
+  if(hash){
+    const id = hash.slice(1);
+    setTimeout(()=>{
+      const el = document.getElementById(id);
+      if(el) window.scrollTo({top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior:'smooth'});
+    }, 120);
+  }
+});
+</script>
+
+</body>
+</html>

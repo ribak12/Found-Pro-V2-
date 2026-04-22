@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Oasis Healthcare lab report tracking and download page for patients." />
+  <title>Lab Report Status | Oasis Healthcare</title>
+  <link rel="icon" type="image/jpeg" href="oasis-healthcare-logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root{
+      --bg:#f4f8fc;
+      --off:#edf4fb;
+      --panel:#ffffff;
+      --cream:#e7f0fa;
+      --border:#d7e3f0;
+      --border-dk:#b8cbe0;
+      --text:#142638;
+      --mid:#4f6478;
+      --muted:#7f93a8;
+      --blue:#1E7EC8;
+      --blue-dk:#155f99;
+      --blue-soft:#eaf4fc;
+      --logo-red:#E31E2F;
+      --serif:'Fraunces', Georgia, serif;
+      --sans:'DM Sans', system-ui, sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--sans);
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    button,input{font:inherit}
+
+    #tnav{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:100;
+      height:72px;
+      background:rgba(244,248,252,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      padding:0 24px;
+    }
+
+    .tn-inner{
+      width:100%;
+      max-width:1320px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .tn-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .tn-icon{
+      width:58px;
+      height:44px;
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid rgba(30,126,200,.14);
+      box-shadow:0 10px 24px rgba(20,38,56,.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      padding:2px 4px;
+    }
+
+    .tn-icon img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .tn-name{
+      font-size:18px;
+      font-weight:700;
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+
+    .tn-name .bl{color:var(--blue)}
+    .tn-name .rd{color:var(--logo-red)}
+    .tn-tag{
+      font-size:10px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    .tn-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      list-style:none;
+    }
+
+    .tn-links a{
+      font-size:14px;
+      color:var(--mid);
+    }
+
+    .tn-links a:hover,
+    .tn-links a.active{
+      color:var(--text);
+    }
+
+    .tn-right{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .pill-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid var(--border-dk);
+      background:#fff;
+      color:var(--mid);
+      font-size:13px;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+
+    .pill-btn:hover{
+      transform:translateY(-1px);
+      border-color:var(--blue);
+      color:var(--text);
+    }
+
+    .pill-btn.primary{
+      background:var(--blue);
+      color:#fff;
+      border-color:var(--blue);
+    }
+
+    .pill-btn.primary:hover{
+      background:var(--blue-dk);
+    }
+
+    main{padding-top:72px}
+
+    .hero{
+      position:relative;
+      min-height:72vh;
+      overflow:hidden;
+      border-bottom:1px solid var(--border);
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(120deg,rgba(244,248,252,.95) 0%,rgba(244,248,252,.82) 42%,rgba(244,248,252,.18) 100%),
+        url('https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+
+    .hero-shell{
+      position:relative;
+      z-index:2;
+      max-width:1320px;
+      margin:0 auto;
+      padding:88px 24px 60px;
+      display:grid;
+      grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);
+      gap:24px;
+      align-items:end;
+    }
+
+    .hero-copy{max-width:740px}
+
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(30,126,200,.08);
+      border:1px solid rgba(30,126,200,.16);
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:24px;
+    }
+
+    .hero-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--blue);
+    }
+
+    .hero h1{
+      font-family:var(--serif);
+      font-size:clamp(42px,6vw,78px);
+      font-weight:300;
+      line-height:1.03;
+      letter-spacing:-.035em;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:18px;
+      line-height:1.78;
+      color:var(--mid);
+      max-width:58ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .hero-panel{
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(255,255,255,.74);
+      backdrop-filter:blur(14px);
+      border-radius:28px;
+      padding:24px;
+      box-shadow:0 22px 40px rgba(20,38,56,.08);
+    }
+
+    .hero-panel h3{
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--blue);
+      margin-bottom:12px;
+    }
+
+    .hero-panel .big{
+      font-family:var(--serif);
+      font-size:34px;
+      line-height:1.05;
+      margin-bottom:10px;
+    }
+
+    .hero-panel p{
+      font-size:14px;
+      line-height:1.75;
+      color:var(--mid);
+    }
+
+    .hero-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .hero-mini{
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(234,244,252,.88);
+      border:1px solid rgba(30,126,200,.12);
+    }
+
+    .hero-mini small{
+      display:block;
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:7px;
+    }
+
+    .hero-mini strong{
+      font-size:18px;
+      color:var(--text);
+    }
+
+    .wrap{
+      max-width:1320px;
+      margin:0 auto;
+      padding:0 24px;
+    }
+
+    .sec{
+      padding:86px 0;
+      border-bottom:1px solid var(--border);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--blue);
+      margin-bottom:16px;
+    }
+
+    .sec-head{
+      display:flex;
+      justify-content:space-between;
+      gap:26px;
+      align-items:end;
+      flex-wrap:wrap;
+      margin-bottom:36px;
+    }
+
+    .sec-head h2{
+      font-family:var(--serif);
+      font-weight:300;
+      font-size:clamp(34px,4.4vw,60px);
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+
+    .sec-head p{
+      max-width:560px;
+      font-size:17px;
+      line-height:1.76;
+      color:var(--mid);
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:22px;
+    }
+
+    .card,
+    .preview-card,
+    .soft-card,
+    .subcard,
+    .pdf-shell{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:28px;
+      box-shadow:0 18px 40px rgba(20,38,56,.05);
+    }
+
+    .card{
+      padding:28px;
+    }
+
+    .card h3{
+      font-size:18px;
+      margin-bottom:18px;
+    }
+
+    .field-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .field.full{grid-column:1/-1}
+
+    .field label{
+      font-size:13px;
+      color:var(--mid);
+      font-weight:500;
+    }
+
+    .field input{
+      height:50px;
+      padding:0 14px;
+      border-radius:15px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      outline:none;
+      transition:.2s ease;
+    }
+
+    .field input:focus{
+      border-color:rgba(30,126,200,.45);
+      box-shadow:0 0 0 4px rgba(30,126,200,.08);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:13px 20px;
+      border-radius:999px;
+      border:1px solid var(--border-dk);
+      background:#fff;
+      color:var(--mid);
+      cursor:pointer;
+      transition:.22s ease;
+    }
+
+    .btn.primary{
+      background:var(--blue);
+      border-color:var(--blue);
+      color:#fff;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .btn.primary:hover{
+      background:var(--blue-dk);
+    }
+
+    .note{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+      margin-top:14px;
+    }
+
+    .demo-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .demo-pill{
+      padding:10px 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--border);
+      font-size:13px;
+      color:var(--mid);
+      cursor:pointer;
+    }
+
+    .demo-pill:hover{
+      border-color:var(--blue);
+      color:var(--text);
+    }
+
+    .result-hero{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:20px;
+    }
+
+    .score{
+      font-family:var(--serif);
+      font-size:46px;
+      line-height:.95;
+      letter-spacing:-.04em;
+      word-break:break-word;
+    }
+
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:var(--blue-soft);
+      border:1px solid rgba(30,126,200,.14);
+      font-size:12px;
+      font-weight:700;
+      color:var(--blue);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .info-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-item{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:var(--off);
+      border:1px solid rgba(30,126,200,.08);
+    }
+
+    .info-item span{
+      color:var(--mid);
+      font-size:14px;
+    }
+
+    .info-item strong{
+      font-size:15px;
+      text-align:right;
+    }
+
+    .timeline{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .step{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      padding:16px 18px;
+      border-radius:20px;
+      background:var(--off);
+      border:1px solid rgba(30,126,200,.08);
+    }
+
+    .step .dot{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      margin-top:5px;
+      background:#bfdcf2;
+      box-shadow:0 0 0 6px rgba(30,126,200,.08);
+      flex-shrink:0;
+    }
+
+    .step.active{
+      background:#fff;
+    }
+
+    .step.active .dot{background:var(--blue)}
+    .step.done .dot{background:#66aee0}
+
+    .quick-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .quick-tile{
+      padding:16px 18px;
+      border-radius:20px;
+      background:linear-gradient(180deg,#fff 0%,#f6fbff 100%);
+      border:1px solid var(--border);
+    }
+
+    .quick-tile small{
+      display:block;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .quick-tile strong{
+      display:block;
+      font-size:16px;
+      line-height:1.45;
+    }
+
+    .preview-card{
+      margin-top:22px;
+      padding:28px;
+    }
+
+    .preview-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .preview-head h3{
+      margin:0;
+      font-size:28px;
+      font-family:var(--serif);
+      font-weight:300;
+      letter-spacing:-.02em;
+    }
+
+    .preview-head p{
+      max-width:760px;
+      color:var(--mid);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .preview-layout{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .stack{
+      display:grid;
+      gap:14px;
+    }
+
+    .subcard{
+      padding:22px;
+    }
+
+    .subcard h4{
+      font-size:16px;
+      margin-bottom:14px;
+    }
+
+    .meta-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px 14px;
+    }
+
+    .meta-row{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(30,126,200,.09);
+    }
+
+    .meta-row:last-child{
+      border-bottom:none;
+    }
+
+    .meta-row span{
+      font-size:13px;
+      color:var(--mid);
+    }
+
+    .meta-row strong{
+      font-size:14px;
+      text-align:right;
+    }
+
+    .chip-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 13px;
+      border-radius:999px;
+      background:var(--blue-soft);
+      border:1px solid rgba(30,126,200,.12);
+      font-size:12px;
+      color:var(--blue);
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    .table-wrap{overflow:auto}
+
+    .result-table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0 10px;
+    }
+
+    .result-table th{
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-weight:700;
+      text-align:left;
+      padding:0 14px 4px;
+    }
+
+    .result-table td{
+      background:var(--off);
+      padding:14px;
+      border-top:1px solid rgba(30,126,200,.07);
+      border-bottom:1px solid rgba(30,126,200,.07);
+    }
+
+    .result-table td:first-child{
+      border-left:1px solid rgba(30,126,200,.07);
+      border-radius:16px 0 0 16px;
+      font-weight:600;
+    }
+
+    .result-table td:last-child{
+      border-right:1px solid rgba(30,126,200,.07);
+      border-radius:0 16px 16px 0;
+    }
+
+    .pdf-shell{
+      overflow:hidden;
+    }
+
+    .pdf-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 18px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);
+      flex-wrap:wrap;
+    }
+
+    .pdf-bar strong{font-size:15px}
+    .pdf-bar span{font-size:12px;color:var(--muted)}
+
+    .pdf-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border-dk);
+      background:#fff;
+      color:var(--mid);
+      font-size:13px;
+      transition:.2s ease;
+    }
+
+    .mini-btn:hover{
+      border-color:var(--blue);
+      color:var(--text);
+      transform:translateY(-1px);
+    }
+
+    .pdf-frame{
+      width:100%;
+      height:760px;
+      border:0;
+      background:#f0f5fb;
+      display:none;
+    }
+
+    .empty-state{
+      padding:34px 18px;
+      color:var(--mid);
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    .strip{
+      padding:14px 0;
+      background:linear-gradient(90deg,var(--blue),var(--logo-red));
+      overflow:hidden;
+    }
+
+    .track{
+      display:flex;
+      width:max-content;
+      animation:marq 26s linear infinite;
+    }
+
+    .track span{
+      white-space:nowrap;
+      color:rgba(255,255,255,.92);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:13px;
+      padding:0 30px;
+    }
+
+    .footer{
+      padding:38px 24px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @keyframes marq{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    @media (max-width:1150px){
+      .hero-shell,
+      .card-grid,
+      .preview-layout{
+        grid-template-columns:1fr;
+      }
+      .quick-grid{
+        grid-template-columns:1fr 1fr;
+      }
+      .tn-links{display:none}
+      .pdf-frame{height:620px}
+    }
+
+    @media (max-width:720px){
+      #tnav{padding:0 14px}
+      .tn-right .pill-btn:not(.primary){display:none}
+      .hero-shell{padding:72px 16px 44px}
+      .wrap{padding:0 16px}
+      .field-grid,
+      .quick-grid,
+      .meta-grid{
+        grid-template-columns:1fr;
+      }
+      .hero p{font-size:16px}
+      .hero-mini-grid{grid-template-columns:1fr}
+      .preview-card,
+      .card,
+      .subcard{padding:18px}
+      .pdf-frame{height:420px}
+      .info-item,
+      .meta-row{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .info-item strong,
+      .meta-row strong{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="tnav">
+    <div class="tn-inner">
+      <a class="tn-logo" href="index.html">
+        <div class="tn-icon">
+          <img src="oasis-healthcare-logo.jpeg" alt="Oasis Healthcare logo" />
+        </div>
+        <div>
+          <div class="tn-name"><span class="bl">Oasis</span> <span class="rd">Healthcare</span></div>
+          <div class="tn-tag">Heal · Love · Care</div>
+        </div>
+      </a>
+
+      <ul class="tn-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#s-services">Services</a></li>
+        <li><a href="lab-reports.html" class="active">Lab Reports</a></li>
+        <li><a href="index.html#s-location">Location</a></li>
+      </ul>
+
+      <div class="tn-right">
+        <a class="pill-btn" href="tel:+919863984852"><i class="fas fa-phone"></i> Call</a>
+        <a class="pill-btn" href="bmi-calculator.html"><i class="fas fa-calculator"></i> BMI Tool</a>
+        <a class="pill-btn primary" href="index.html#s-contact">Book Visit</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="hero-kicker"><span class="hero-dot"></span> Patient access</div>
+          <h1>Lab report status &amp; download</h1>
+          <p>Search by report ID and access code, preview the available report clearly, and open the PDF when it is ready.</p>
+          <div class="hero-actions">
+            <a class="pill-btn primary" href="#reports"><i class="fas fa-magnifying-glass"></i> Check now</a>
+            <a class="pill-btn" href="#report-preview-section"><i class="fas fa-file-medical"></i> Report preview</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <h3>Report access</h3>
+          <div class="big">PDF preview</div>
+          <p>The uploaded thyroid report is connected to the database flow and can be previewed here when the report is ready.</p>
+          <div class="hero-mini-grid">
+            <div class="hero-mini"><small>Report ID</small><strong>012409060091</strong></div>
+            <div class="hero-mini"><small>Access code</small><strong>0091</strong></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="sec" id="reports">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">Report checker</span>
+            <h2>Track your report</h2>
+          </div>
+          <p>Search by report ID and access code. The thyroid function test report will open with preview and downloadable PDF when found.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3>Search details</h3>
+
+            <div class="field-grid">
+              <div class="field full">
+                <label for="reportId">Report ID</label>
+                <input id="reportId" type="text" placeholder="Example: 012409060091" />
+              </div>
+
+              <div class="field">
+                <label for="accessCode">Access code</label>
+                <input id="accessCode" type="text" maxlength="4" placeholder="0091" />
+              </div>
+
+              <div class="field">
+                <label for="patientDob">Date of birth (optional)</label>
+                <input id="patientDob" type="date" />
+              </div>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn primary" id="checkBtn"><i class="fas fa-magnifying-glass"></i> Check status</button>
+              <button class="btn" id="downloadBtn" style="display:none"><i class="fas fa-download"></i> Download file</button>
+            </div>
+
+            <div class="note">Use report ID <strong>012409060091</strong> with access code <strong>0091</strong>.</div>
+
+            <div class="demo-pills">
+              <button class="demo-pill" data-id="012409060091" data-access="0091" data-dob="">012409060091 · Thyroid Report</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="result-hero">
+              <div>
+                <div class="eyebrow" style="margin-bottom:8px">Current result</div>
+                <div class="score" id="statusCode">—</div>
+              </div>
+              <div class="status" id="statusBadge"><i class="fas fa-clock"></i> Awaiting search</div>
+            </div>
+
+            <div class="info-list">
+              <div class="info-item"><span>Patient</span><strong id="patientName">Search to view</strong></div>
+              <div class="info-item"><span>Test</span><strong id="reportTest">—</strong></div>
+              <div class="info-item"><span>Collected on</span><strong id="reportDate">—</strong></div>
+              <div class="info-item"><span>Expected update</span><strong id="reportEta">—</strong></div>
+            </div>
+
+            <div class="timeline" id="timeline">
+              <div class="step"><span class="dot"></span><div><strong>Sample collected</strong><div class="note">Waiting for a search</div></div></div>
+              <div class="step"><span class="dot"></span><div><strong>Processing</strong><div class="note">Waiting for a search</div></div></div>
+              <div class="step"><span class="dot"></span><div><strong>Ready to download</strong><div class="note">Waiting for a search</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-grid" id="report-preview-section">
+          <div class="quick-tile"><small>Included report</small><strong>Thyroid Function Test</strong></div>
+          <div class="quick-tile"><small>Patient</small><strong>Mr. BIPUL CH BORO</strong></div>
+          <div class="quick-tile"><small>Centre</small><strong>Oasis Clinic and Diagnostic Center</strong></div>
+          <div class="quick-tile"><small>Status</small><strong>Ready with PDF preview</strong></div>
+        </div>
+
+        <div class="preview-card" id="previewSection" style="display:none">
+          <div class="preview-head">
+            <div>
+              <span class="eyebrow">Live preview</span>
+              <h3 id="previewTitle">Report preview</h3>
+            </div>
+            <p id="previewText">Search a report to show the cleaner summary layout and embedded preview area.</p>
+          </div>
+
+          <div class="preview-layout">
+            <div class="stack">
+              <div class="subcard">
+                <h4>Report summary</h4>
+                <div class="meta-grid" id="metaGrid"></div>
+                <div class="chip-row" id="chipRow"></div>
+              </div>
+
+              <div class="subcard">
+                <h4>Result values</h4>
+                <div class="table-wrap">
+                  <table class="result-table">
+                    <thead>
+                      <tr>
+                        <th>Test name</th>
+                        <th>Result</th>
+                        <th>Reference range</th>
+                      </tr>
+                    </thead>
+                    <tbody id="resultRows">
+                      <tr><td colspan="3">Search a report to show values.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="note" id="valuesNote">The selected report values and summary will appear here.</div>
+              </div>
+            </div>
+
+            <div class="pdf-shell">
+              <div class="pdf-bar">
+                <div>
+                  <strong id="pdfTitle">PDF preview area</strong><br />
+                  <span id="pdfSub">Ready reports can open the source file here.</span>
+                </div>
+
+                <div class="pdf-actions">
+                  <a class="mini-btn" id="openPdfBtn" href="#" target="_blank" style="display:none"><i class="fas fa-up-right-from-square"></i> Open PDF</a>
+                  <a class="mini-btn" id="downloadPdfBtn" href="#" download style="display:none"><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+              </div>
+
+              <div class="empty-state" id="emptyPdfState">Use the report search above. When a real file is attached, the PDF preview appears here.</div>
+              <iframe class="pdf-frame" id="pdfFrame" title="Report PDF preview"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="strip">
+    <div class="track">
+      <span>Ultrasound</span><span>Blood Tests</span><span>Gynaecology</span><span>General Medicine</span><span>Oxygen Rental</span><span>Pharmacy</span><span>BMI Calculator</span><span>Lab Reports</span>
+      <span>Ultrasound</span><span>Blood Tests</span><span>Gynaecology</span><span>General Medicine</span><span>Oxygen Rental</span><span>Pharmacy</span><span>BMI Calculator</span><span>Lab Reports</span>
+    </div>
+  </div>
+
+  <div class="footer">Oasis Healthcare · Kwakta Bazar, Manipur · Lab report preview connected to MongoDB.</div>
+
+  <script>
+    const API_BASE = 'http://localhost:5001';
+
+    const statusBadge = document.getElementById('statusBadge');
+    const statusCode = document.getElementById('statusCode');
+    const patientName = document.getElementById('patientName');
+    const reportTest = document.getElementById('reportTest');
+    const reportDate = document.getElementById('reportDate');
+    const reportEta = document.getElementById('reportEta');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const previewSection = document.getElementById('previewSection');
+    const previewTitle = document.getElementById('previewTitle');
+    const previewText = document.getElementById('previewText');
+    const metaGrid = document.getElementById('metaGrid');
+    const chipRow = document.getElementById('chipRow');
+    const resultRows = document.getElementById('resultRows');
+    const valuesNote = document.getElementById('valuesNote');
+    const pdfFrame = document.getElementById('pdfFrame');
+    const emptyPdfState = document.getElementById('emptyPdfState');
+    const openPdfBtn = document.getElementById('openPdfBtn');
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    const pdfTitle = document.getElementById('pdfTitle');
+    const pdfSub = document.getElementById('pdfSub');
+
+    let currentRecord = null;
+
+    function setTimeline(status){
+      const steps = [...document.querySelectorAll('#timeline .step')];
+      steps.forEach(step => step.className = 'step');
+
+      if(status === 'collected'){
+        steps[0].classList.add('active');
+      }
+
+      if(status === 'processing'){
+        steps[0].classList.add('done');
+        steps[1].classList.add('active');
+      }
+
+      if(status === 'ready'){
+        steps[0].classList.add('done');
+        steps[1].classList.add('done');
+        steps[2].classList.add('active');
+      }
+    }
+
+    function renderMeta(meta = []){
+      metaGrid.innerHTML = meta.map(([key, value]) => `
+        <div class="meta-row">
+          <span>${key}</span>
+          <strong>${value}</strong>
+        </div>
+      `).join('');
+    }
+
+    function renderChips(chips = []){
+      chipRow.innerHTML = chips.map(item => `
+        <span class="chip"><i class="fas fa-circle-check"></i> ${item}</span>
+      `).join('');
+    }
+
+    function renderValues(values = []){
+      if(!values.length){
+        resultRows.innerHTML = '<tr><td colspan="3">No final values are available for this record yet.</td></tr>';
+        return;
+      }
+
+      resultRows.innerHTML = values.map(row => `
+        <tr>
+          <td>${row[0]}</td>
+          <td>${row[1]}</td>
+          <td>${row[2]}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderPdf(rec){
+      if(rec.pdf && rec.status === 'ready'){
+        pdfFrame.src = `${rec.pdf}#toolbar=0&navpanes=0&scrollbar=1`;
+        pdfFrame.style.display = 'block';
+        emptyPdfState.style.display = 'none';
+
+        openPdfBtn.style.display = 'inline-flex';
+        downloadPdfBtn.style.display = 'inline-flex';
+
+        openPdfBtn.href = rec.pdf;
+        downloadPdfBtn.href = rec.pdf;
+
+        pdfTitle.textContent = 'Original lab PDF';
+        pdfSub.textContent = 'Open or download the uploaded report file directly.';
+      } else {
+        pdfFrame.removeAttribute('src');
+        pdfFrame.style.display = 'none';
+        emptyPdfState.style.display = 'block';
+        emptyPdfState.textContent = rec.status === 'ready'
+          ? 'This ready record has a summary layout but no attached PDF file.'
+          : 'This report is not ready yet, so a final PDF is not available.';
+
+        openPdfBtn.style.display = 'none';
+        downloadPdfBtn.style.display = 'none';
+
+        pdfTitle.textContent = 'PDF preview area';
+        pdfSub.textContent = 'A ready report with an attached file will appear here.';
+      }
+    }
+
+    function renderReport(rec, id){
+      currentRecord = { ...rec, id };
+
+      const nice = {
+        ready: ['Ready to download', 'fa-circle-check'],
+        processing: ['Processing', 'fa-flask'],
+        collected: ['Sample collected', 'fa-vial']
+      };
+
+      const [label, icon] = nice[rec.status] || ['Unknown status', 'fa-circle-info'];
+
+      statusCode.textContent = id;
+      statusBadge.innerHTML = `<i class="fas ${icon}"></i> ${label}`;
+
+      patientName.textContent = rec.patient || '—';
+      reportTest.textContent = rec.test || '—';
+      reportDate.textContent = rec.date || '—';
+      reportEta.textContent = rec.eta || '—';
+
+      downloadBtn.style.display = rec.status === 'ready' ? 'inline-flex' : 'none';
+      downloadBtn.innerHTML = rec.pdf
+        ? '<i class="fas fa-download"></i> Download PDF'
+        : '<i class="fas fa-download"></i> Download summary';
+
+      setTimeline(rec.status);
+
+      previewSection.style.display = 'block';
+      previewTitle.textContent = rec.previewTitle || 'Report preview';
+      previewText.textContent = rec.previewText || 'Selected report details are shown below.';
+
+      renderMeta(rec.meta || []);
+      renderChips(rec.chips || []);
+      renderValues(rec.values || []);
+      valuesNote.textContent = rec.valuesNote || 'Report values are shown here.';
+      renderPdf(rec);
+    }
+
+    function resetView(message = 'No matching report found.'){
+      currentRecord = null;
+
+      statusCode.textContent = 'Not found';
+      statusBadge.innerHTML = '<i class="fas fa-circle-info"></i> Please check details';
+      patientName.textContent = 'No matching report';
+      reportTest.textContent = '—';
+      reportDate.textContent = '—';
+      reportEta.textContent = 'Try the report ID';
+
+      downloadBtn.style.display = 'none';
+
+      [...document.querySelectorAll('#timeline .step')].forEach(step => {
+        step.className = 'step';
+      });
+
+      previewSection.style.display = 'block';
+      previewTitle.textContent = 'No matching report found';
+      previewText.textContent = message;
+      metaGrid.innerHTML = '';
+      chipRow.innerHTML = '';
+      resultRows.innerHTML = '<tr><td colspan="3">Use 012409060091 with access code 0091.</td></tr>';
+      valuesNote.textContent = 'The uploaded thyroid report is connected here.';
+      renderPdf({ status: 'collected' });
+    }
+
+    async function checkReport(){
+      const id = document.getElementById('reportId').value.trim().toUpperCase();
+      const access = document.getElementById('accessCode').value.trim();
+      const dob = document.getElementById('patientDob').value.trim();
+
+      if(!id || !access){
+        resetView('Enter report ID and access code first.');
+        return;
+      }
+
+      try {
+        const qs = new URLSearchParams({
+          reportId: id,
+          accessCode: access
+        });
+
+        if(dob) qs.set('patientDob', dob);
+
+        const res = await fetch(`${API_BASE}/api/lab-reports/check?${qs.toString()}`);
+        const data = await res.json();
+
+        if(!res.ok){
+          resetView(data.message || 'No matching report found.');
+          return;
+        }
+
+        renderReport(data.report, data.report.id);
+      } catch (error) {
+        console.error(error);
+        resetView('Could not connect to backend. Make sure your server is running on port 5001.');
+      }
+    }
+
+    function downloadReport(){
+      if(!currentRecord || currentRecord.status !== 'ready') return;
+
+      if(currentRecord.pdf){
+        const a = document.createElement('a');
+        a.href = currentRecord.pdf;
+        a.download = '';
+        a.click();
+        return;
+      }
+
+      const values = (currentRecord.values || [])
+        .map(v => `${v[0]}: ${v[1]} | Range: ${v[2]}`)
+        .join('\n');
+
+      const meta = (currentRecord.meta || [])
+        .map(v => `${v[0]}: ${v[1]}`)
+        .join('\n');
+
+      const content = `Oasis Healthcare
+Report ID: ${currentRecord.id}
+Patient: ${currentRecord.patient}
+Test: ${currentRecord.test}
+Collected on: ${currentRecord.date}
+Status: Ready to download
+
+${meta}
+
+${values}`;
+
+      const blob = new Blob([content], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${currentRecord.id}-summary.txt`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    document.getElementById('checkBtn').addEventListener('click', checkReport);
+    document.getElementById('downloadBtn').addEventListener('click', downloadReport);
+
+    document.querySelectorAll('.demo-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('reportId').value = btn.dataset.id;
+        document.getElementById('accessCode').value = btn.dataset.access;
+        document.getElementById('patientDob').value = btn.dataset.dob;
+        checkReport();
+      });
+    });
+  </script>
+</body>
+</html>

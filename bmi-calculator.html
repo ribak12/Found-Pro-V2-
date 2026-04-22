@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Oasis Healthcare BMI and health calculator page for patients.">
+<title>BMI & Health Calculator | Oasis Healthcare</title>
+<link rel="icon" type="image/jpeg" href="oasis-healthcare-logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#f4f8fc;
+  --off:#edf4fb;
+  --panel:#ffffff;
+  --cream:#e7f0fa;
+  --border:#d7e3f0;
+  --border-dk:#b8cbe0;
+  --text:#142638;
+  --mid:#4f6478;
+  --muted:#7f93a8;
+  --blue:#1E7EC8;
+  --blue-dk:#155f99;
+  --blue-soft:#eaf4fc;
+  --logo-red:#E31E2F;
+  --wa:#25D366;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+#tnav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;background:rgba(244,248,252,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px}
+.tn-inner{width:100%;max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.tn-logo{display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none}
+.tn-icon{width:58px;height:44px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(30,126,200,.14);box-shadow:0 10px 24px rgba(20,38,56,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:2px 4px}
+.tn-name{font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1.05}.tn-name .bl{color:var(--blue)}.tn-name .rd{color:var(--logo-red)}
+.tn-icon img{width:100%;height:100%;object-fit:contain;display:block}.tn-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:2px}
+.tn-links{display:flex;gap:26px;list-style:none;align-items:center}.tn-links a{font-size:13px;color:var(--mid);transition:color .2s}.tn-links a:hover,.tn-links a.active{color:var(--text)}
+.tn-right{display:flex;gap:10px;align-items:center}.pill-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--border-dk);background:#fff;color:var(--mid);font-size:13px;transition:all .22s}.pill-btn:hover{transform:translateY(-1px);border-color:var(--blue)}
+.pill-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.pill-btn.primary:hover{background:var(--blue-dk)}
+main{padding-top:72px}
+.hero{position:relative;overflow:hidden;min-height:68vh;padding:82px 24px 54px;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(244,248,252,.98) 0%,rgba(244,248,252,.88) 42%,rgba(244,248,252,.2) 100%);z-index:1}
+.hero::after{content:'';position:absolute;right:-90px;top:80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.16) 0%,rgba(30,126,200,.06) 42%,transparent 72%);filter:blur(1px);animation:orbFloat 10s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.04);animation:bgFloat 18s ease-in-out infinite alternate}
+.hero-shell{position:relative;z-index:2;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:28px;align-items:end}
+.hero-copy{max-width:760px;padding:18px 0}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(30,126,200,.08);border:1px solid rgba(30,126,200,.16);color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:pulse 2.1s ease-in-out infinite}
+.hero h1{font-family:var(--serif);font-size:clamp(42px,6vw,82px);font-weight:300;line-height:1.03;letter-spacing:-.035em;margin-bottom:20px}
+.hero p{font-size:18px;line-height:1.78;color:var(--mid);max-width:60ch}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-panel{background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.74);backdrop-filter:blur(14px);border-radius:28px;padding:24px;box-shadow:0 22px 40px rgba(20,38,56,.08)}
+.hero-panel h3{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin-bottom:12px}
+.hero-panel .big{font-family:var(--serif);font-size:34px;line-height:1.05;margin-bottom:10px}
+.hero-panel p{font-size:14px;line-height:1.75;color:var(--mid)}
+.hero-mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.hero-mini{padding:14px 16px;border-radius:18px;background:rgba(234,244,252,.85);border:1px solid rgba(30,126,200,.12)}
+.hero-mini small{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}.hero-mini strong{font-size:18px;color:var(--text)}
+.wrap{max-width:1320px;margin:0 auto;padding:0 24px}
+.sec{padding:86px 0;border-bottom:1px solid var(--border)}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+.sec-head{display:flex;justify-content:space-between;gap:26px;align-items:end;flex-wrap:wrap;margin-bottom:36px}
+.sec-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,60px);line-height:1.08;letter-spacing:-.03em}.sec-head p{max-width:560px;font-size:17px;line-height:1.76;color:var(--mid)}
+.card-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:22px}
+.card{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--border);border-radius:28px;padding:28px;box-shadow:0 18px 40px rgba(20,38,56,.05)}
+.card::before{content:'';position:absolute;inset:auto -40px -70px auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(30,126,200,.12),transparent 68%);pointer-events:none}
+.card h3{font-size:18px;margin-bottom:18px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}.field label{font-size:13px;color:var(--mid);font-weight:500}.input-wrap{position:relative}.field input,.field select{width:100%;height:50px;padding:0 42px 0 14px;border-radius:15px;border:1px solid var(--border);background:#fff;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s}.field input:focus,.field select:focus{border-color:rgba(30,126,200,.45);box-shadow:0 0 0 4px rgba(30,126,200,.08)}.field.invalid input{border-color:var(--logo-red);background:#fff7f8;box-shadow:0 0 0 4px rgba(227,30,47,.08)}.field.invalid label{color:var(--logo-red)}.warn-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--logo-red);font-size:16px;display:none;pointer-events:none}.field.invalid .warn-icon{display:block}.field-msg{display:none;font-size:12px;line-height:1.5;color:var(--logo-red);margin-top:2px}.field.invalid .field-msg{display:block}
+.field input:focus,.field select:focus{border-color:rgba(30,126,200,.45);box-shadow:0 0 0 4px rgba(30,126,200,.08)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border-radius:999px;border:1px solid var(--border-dk);background:#fff;color:var(--mid);cursor:pointer;transition:all .22s}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:hover{transform:translateY(-1px)}.btn.primary:hover{background:var(--blue-dk)}
+.result-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px}.score{font-family:var(--serif);font-size:70px;line-height:.92;letter-spacing:-.06em}.badge{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;background:var(--blue-soft);border:1px solid rgba(30,126,200,.14);color:var(--blue);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.result-copy{font-size:15px;line-height:1.8;color:var(--mid)}
+.scale{margin:26px 0 22px}.scale-bar{position:relative;height:12px;border-radius:999px;background:linear-gradient(90deg,#dcecf8 0%,#bfddf3 25%,#8cc1e7 50%,#61a5d9 75%,#2d8bd0 100%)}.scale-marker{position:absolute;top:50%;width:18px;height:18px;border-radius:50%;border:3px solid #fff;background:var(--blue);box-shadow:0 8px 18px rgba(30,126,200,.28);transform:translate(-50%,-50%);left:28%}
+.scale-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:10px}
+.info-list{display:grid;gap:12px;margin-top:18px}.info-item{display:flex;justify-content:space-between;gap:16px;padding:14px 16px;border-radius:18px;background:var(--off);border:1px solid rgba(30,126,200,.08)}.info-item span{color:var(--mid);font-size:14px}.info-item strong{font-size:15px}
+.soft-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.soft-card{background:linear-gradient(180deg,#fff 0%,#f6fbff 100%);border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:0 14px 34px rgba(20,38,56,.04)}.soft-card i{width:46px;height:46px;border-radius:14px;background:var(--blue-soft);display:flex;align-items:center;justify-content:center;color:var(--blue);margin-bottom:16px}.soft-card h4{font-size:18px;margin-bottom:8px}.soft-card p{font-size:14px;line-height:1.75;color:var(--mid)}
+.strip{padding:14px 0;background:linear-gradient(90deg,var(--blue),var(--logo-red));overflow:hidden}.track{display:flex;width:max-content;animation:marq 26s linear infinite}.track span{white-space:nowrap;color:rgba(255,255,255,.92);text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:0 30px}
+.note{font-size:13px;color:var(--muted);line-height:1.7;margin-top:14px}
+.timeline{display:grid;gap:12px;margin-top:16px}.step{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-radius:20px;background:var(--off);border:1px solid rgba(30,126,200,.08)}.step .dot{width:14px;height:14px;border-radius:50%;margin-top:5px;background:#bfdcf2;box-shadow:0 0 0 6px rgba(30,126,200,.08)}.step.active{background:#fff}.step.active .dot{background:var(--blue)}.step.done .dot{background:#66aee0}
+.status{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:var(--blue-soft);border:1px solid rgba(30,126,200,.14);font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.08em}
+.demo-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.demo-pill{padding:10px 14px;border-radius:999px;background:#fff;border:1px solid var(--border);font-size:13px;color:var(--mid);cursor:pointer;transition:all .2s}.demo-pill:hover{border-color:var(--blue);color:var(--text)}
+.footer{padding:38px 24px;text-align:center;color:var(--muted);font-size:13px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:none}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+@keyframes orbFloat{0%{transform:translateY(0px)}100%{transform:translateY(18px)}}
+@keyframes bgFloat{0%{transform:scale(1.04) translate3d(0,0,0)}100%{transform:scale(1.08) translate3d(-8px,-10px,0)}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width: 1050px){.hero-shell,.card-grid{grid-template-columns:1fr}.soft-grid{grid-template-columns:1fr 1fr}.tn-links{display:none}}
+@media (max-width: 720px){#tnav{padding:0 14px}.tn-right .pill-btn:not(.primary){display:none}.hero{padding-inline:16px}.wrap{padding:0 16px}.field-grid,.soft-grid,.hero-mini-grid{grid-template-columns:1fr}.score{font-size:56px}.hero p{font-size:16px}.hero-panel{padding:20px}}
+
+
+/* MOBILE REFINEMENT PATCH */
+.tn-logo > div:last-child{min-width:0}
+.tn-name,.tn-tag{white-space:nowrap}
+
+@media (max-width:900px){
+  #tnav{padding:0 18px}
+  .tn-inner{gap:12px;min-width:0}
+  .tn-logo{gap:10px;min-width:0}
+  .tn-icon{width:50px;height:38px;border-radius:12px;padding:2px 3px}
+  .tn-name{font-size:16px}
+  .tn-tag{font-size:9px}
+  .fab-g{right:14px;bottom:18px}
+  .fab{width:46px;height:46px;font-size:18px}
+}
+
+@media (max-width:700px){
+  #tnav{height:64px;padding:0 14px}
+  .tn-inner{gap:10px;min-width:0}
+  .tn-logo{flex:1;max-width:calc(100% - 44px)}
+  .tn-icon{width:46px;height:34px;border-radius:10px}
+  .tn-name{font-size:15px;line-height:1.02}
+  .tn-tag{font-size:8px;letter-spacing:.1em}
+  .ham{padding:6px 0 6px 6px}
+  #mob{top:64px;padding:12px 18px 18px}
+  #mob a{font-size:15px;padding:12px 0}
+  #mc,main{padding-top:64px}
+
+  .hero-shell{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:18px;
+    align-items:start;
+    min-height:auto;
+    padding:22px 18px 18px !important;
+    border-radius:24px;
+    margin-bottom:28px;
+  }
+  .hero-shell > *{min-width:0}
+  .hero-shell::before{background:linear-gradient(180deg,rgba(248,246,242,.98) 0%,rgba(248,246,242,.95) 32%,rgba(248,246,242,.82) 60%,rgba(248,246,242,.44) 100%)}
+  .hero-shell::after{width:210px;height:210px;right:-56px;top:-46px}
+  .hero-copy{max-width:none !important;width:100%}
+  .hero-pill,.hero-kicker{font-size:10px;margin-bottom:18px;padding:6px 11px;letter-spacing:.09em}
+  .hero-title,.hero h1{font-size:clamp(34px,11.5vw,50px);line-height:.98;letter-spacing:-.04em;margin-bottom:16px;max-width:11ch}
+  .hero-sub,.hero p{font-size:15px;line-height:1.68;margin-bottom:22px;max-width:none}
+  .hero-acts,.hero-actions{flex-direction:column;align-items:stretch;gap:10px;margin-top:22px}
+  .hero-acts .btn-grn,.hero-acts .btn-out,.hero-actions .pill-btn,.btn-row .btn,.pdf-actions .mini-btn{width:100%;justify-content:center}
+  .hero-info-card,.hero-panel{
+    position:relative !important;
+    inset:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    width:100% !important;
+    max-width:none !important;
+    margin-top:0 !important;
+    padding:18px 16px 16px !important;
+    border-radius:20px !important;
+  }
+  .hero-info-top{display:block}
+  .hero-info-icon{display:none}
+  .hero-info-v,.hero-panel .big{font-size:18px;line-height:1.15}
+  .hero-info-t{font-size:13px;line-height:1.6}
+  .hero-info-row{padding-top:12px;gap:8px}
+  .hero-chip{font-size:11px;padding:8px 10px}
+  .hero-stats{padding-top:26px}
+  .hstat-n{font-size:34px}
+
+  .sec{padding-top:64px;padding-bottom:64px}
+  .wrap{padding:0 16px}
+  .svc-hdr{margin-bottom:34px}
+  .svc-card{padding:24px 20px}
+  .tip-main,.tip-side-card,.t-card,.s-card,.ab-card,.ts-card,.form-c,.lb-card,.rp-card,.card,.soft-card,.pdf-shell,.dt-card,.dt-box,.dt-note,.dt-kpi{border-radius:20px}
+
+  .dt-hero{min-height:auto !important;padding-top:92px;padding-bottom:28px}
+  .dt-cnt{padding:0 18px}
+  .dt-meta{gap:8px;margin-bottom:14px;transform:none}
+  .dt-back,.dt-bdg{min-height:34px;padding:6px 10px;font-size:10px}
+  .dt-t{font-size:clamp(32px,10.8vw,44px);line-height:1.02;margin-bottom:12px;max-width:11ch}
+  .dt-s{font-size:15px;line-height:1.65;max-width:none}
+  .dt-body{padding:34px 18px 56px !important}
+  .dt-grid,.card-grid,.preview-layout{grid-template-columns:1fr !important;gap:18px}
+  .dt-kpis,.dt-card-grid,.quick-grid,.soft-grid,.hero-mini-grid,.field-grid,.meta-grid{grid-template-columns:1fr !important}
+  .dt-side{position:static;gap:12px}
+  .pdf-frame{height:420px}
+}
+
+@media (max-width:480px){
+  #tnav{padding:0 12px}
+  .tn-icon{width:42px;height:32px}
+  .tn-name{font-size:14px}
+  .tn-tag{display:none}
+  .hero-title,.hero h1{font-size:clamp(31px,11.2vw,42px);max-width:10ch}
+  .hero-sub,.hero p,.dt-s{font-size:14px}
+  .hero-pill,.hero-kicker,.dt-bdg,.dt-back{font-size:9px}
+  .hero-info-row{display:grid;grid-template-columns:1fr}
+  .hero-chip{width:100%;justify-content:flex-start}
+  .hero-acts .btn-grn,.hero-acts .btn-out,.hero-actions .pill-btn,.btn-row .btn,.pdf-actions .mini-btn{padding:13px 16px}
+  .fab-g{right:12px;bottom:14px;gap:9px}
+  .fab{width:44px;height:44px;font-size:17px}
+  .hero-panel,.hero-info-card,.card,.dt-card,.dt-box,.dt-note,.dt-kpi{padding:16px !important}
+}
+
+</style>
+</head>
+<body>
+<header id="tnav">
+  <div class="tn-inner">
+    <a class="tn-logo" href="index.html">
+      <div class="tn-icon"><img src="oasis-healthcare-logo.jpeg" alt="Oasis Healthcare logo"></div>
+      <div>
+        <div class="tn-name"><span class="bl">Oasis</span> <span class="rd">Healthcare</span></div>
+        <div class="tn-tag">Heal · Love · Care</div>
+      </div>
+    </a>
+    <ul class="tn-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#s-services">Services</a></li>
+      <li><a href="lab-reports.html" class="active">Reports</a></li>
+      <li><a href="index.html#s-location">Location</a></li>
+    </ul>
+    <div class="tn-right">
+      <a class="pill-btn" href="tel:+919863984852"><i class="fas fa-phone"></i> Call</a>
+      <a class="pill-btn" href="lab-reports.html">Lab Reports</a>
+      <a class="pill-btn primary" href="index.html#s-contact">Book Visit</a>
+    </div>
+  </div>
+</header>
+<main>
+
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&auto=format&fit=crop&q=80')"></div>
+  <div class="hero-shell">
+    <div class="hero-copy reveal">
+      <div class="hero-kicker"><span class="hero-dot"></span> Patient tool</div>
+      <h1>BMI &amp; health calculator</h1>
+      <p>Patients can quickly check body mass index, understand their healthy weight range, and see a simple hydration estimate in one clean page.</p>
+      <div class="hero-actions">
+        <a class="pill-btn primary" href="#calc"><i class="fas fa-calculator"></i> Start calculation</a>
+        <a class="pill-btn" href="lab-reports.html"><i class="fas fa-file-waveform"></i> Check reports</a>
+      </div>
+    </div>
+    <aside class="hero-panel reveal">
+      <h3>Quick guide</h3>
+      <div class="big">Healthy range</div>
+      <p>A BMI from 18.5 to 24.9 is usually considered the healthy adult range. This tool gives a quick guide and should not replace clinical advice.</p>
+      <div class="hero-mini-grid">
+        <div class="hero-mini"><small>Adults</small><strong>18.5 – 24.9</strong></div>
+        <div class="hero-mini"><small>Daily water</small><strong>Based on weight</strong></div>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="sec" id="calc">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">Calculator</span><h2>Calculate in a few seconds</h2></div>
+      <p>Enter your height and weight to get an instant BMI result, category, healthy weight band, and a simple hydration target.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card reveal">
+        <h3>Your details</h3>
+        <div class="field-grid">
+          <div class="field" id="weightField"><label for="weight">Weight in kg</label><div class="input-wrap"><input id="weight" type="number" min="20" max="300" step="0.1" value="62"><span class="warn-icon"><i class="fas fa-circle-exclamation"></i></span></div><div class="field-msg" id="weightMsg"></div></div>
+          <div class="field" id="heightField"><label for="height">Height in cm</label><div class="input-wrap"><input id="height" type="number" min="100" max="250" step="0.1" value="170"><span class="warn-icon"><i class="fas fa-circle-exclamation"></i></span></div><div class="field-msg" id="heightMsg"></div></div>
+          <div class="field" id="ageField"><label for="age">Age</label><div class="input-wrap"><input id="age" type="number" min="18" max="120" step="1" value="24"><span class="warn-icon"><i class="fas fa-circle-exclamation"></i></span></div><div class="field-msg" id="ageMsg"></div></div>
+          <div class="field"><label for="activity">Daily activity</label><div class="input-wrap"><select id="activity"><option value="1">Light</option><option value="1.15">Moderate</option><option value="1.25">Active</option></select></div></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="calcBtn"><i class="fas fa-bolt"></i> Calculate now</button>
+          <button class="btn" id="resetBtn"><i class="fas fa-rotate-left"></i> Reset</button>
+        </div>
+        <div class="note">This page is best used for adults. Enter a weight between 20 and 300 kg, a height between 100 and 250 cm, and an age between 18 and 120 years.</div>
+      </div>
+      <div class="card reveal">
+        <div class="result-hero">
+          <div>
+            <div class="eyebrow" style="margin-bottom:8px">Result</div>
+            <div class="score" id="bmiValue">21.5</div>
+          </div>
+          <div class="badge" id="bmiBadge"><i class="fas fa-circle-check"></i> Healthy</div>
+        </div>
+        <div class="result-copy" id="bmiText">Your BMI is in the healthy range. Keep a steady routine with balanced meals, regular movement, and good hydration.</div>
+        <div class="scale">
+          <div class="scale-bar"><span class="scale-marker" id="bmiMarker"></span></div>
+          <div class="scale-labels"><span>Under</span><span>Healthy</span><span>Over</span><span>Higher</span></div>
+        </div>
+        <div class="info-list">
+          <div class="info-item"><span>Healthy weight range</span><strong id="healthyRange">53.5 – 72.0 kg</strong></div>
+          <div class="info-item"><span>Suggested water target</span><strong id="waterTarget">2.2 L / day</strong></div>
+          <div class="info-item"><span>Height used</span><strong id="heightEcho">170 cm</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec" style="background:var(--off)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow">Wellness notes</span><h2>How to read the result</h2></div>
+      <p>Keep the explanation simple for patients visiting the site for the first time. This makes the page useful without feeling too clinical.</p>
+    </div>
+    <div class="soft-grid">
+      <div class="soft-card reveal"><i class="fas fa-seedling"></i><h4>Use it as a guide</h4><p>BMI is a quick screening tool. It is useful for general awareness, but it does not fully measure muscle mass, body fat distribution, or medical history.</p></div>
+      <div class="soft-card reveal"><i class="fas fa-glass-water"></i><h4>Hydration matters</h4><p>The water estimate helps patients remember a simple daily target. Hot weather, exercise, and illness can increase water needs.</p></div>
+      <div class="soft-card reveal"><i class="fas fa-user-doctor"></i><h4>Know when to ask</h4><p>If the result is far below or above the healthy range, the page gently encourages users to book a consultation for better advice.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<div class="strip"><div class="track"><span>Ultrasound</span><span>Blood Tests</span><span>Gynaecology</span><span>General Medicine</span><span>Oxygen Rental</span><span>Pharmacy</span><span>BMI Calculator</span><span>Lab Reports</span><span>Ultrasound</span><span>Blood Tests</span><span>Gynaecology</span><span>General Medicine</span><span>Oxygen Rental</span><span>Pharmacy</span><span>BMI Calculator</span><span>Lab Reports</span></div></div>
+<div class="footer">Oasis Healthcare · Kwakta Bazar, Manipur · For the live version, connect these tools to your real report system later.</div>
+<script>
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const bmiValue=document.getElementById('bmiValue');
+const bmiBadge=document.getElementById('bmiBadge');
+const bmiText=document.getElementById('bmiText');
+const bmiMarker=document.getElementById('bmiMarker');
+const healthyRange=document.getElementById('healthyRange');
+const waterTarget=document.getElementById('waterTarget');
+const heightEcho=document.getElementById('heightEcho');
+
+const fieldRules={
+  weight:{min:20,max:300,label:'Weight',decimals:1},
+  height:{min:100,max:250,label:'Height',decimals:1},
+  age:{min:18,max:120,label:'Age',decimals:0}
+};
+
+function setFieldState(id,message=''){
+  const field=document.getElementById(id+'Field');
+  const msg=document.getElementById(id+'Msg');
+  if(message){
+    field.classList.add('invalid');
+    msg.textContent=message;
+    return false;
+  }
+  field.classList.remove('invalid');
+  msg.textContent='';
+  return true;
+}
+
+function validateField(id){
+  const input=document.getElementById(id);
+  const rule=fieldRules[id];
+  const value=input.value.trim();
+
+  if(value==='') return setFieldState(id,`Please enter ${rule.label.toLowerCase()}.`);
+
+  const num=Number(value);
+  if(Number.isNaN(num)) return setFieldState(id,`${rule.label} must be a number.`);
+  if(num<rule.min || num>rule.max){
+    return setFieldState(id,`${rule.label} must be between ${rule.min} and ${rule.max}${id==='weight'?' kg':id==='height'?' cm':''}.`);
+  }
+  return setFieldState(id,'');
+}
+
+function validateAll(){
+  return ['weight','height','age'].every(validateField);
+}
+
+function showNeedsAttention(){
+  bmiBadge.innerHTML='<i class="fas fa-triangle-exclamation"></i> Check input';
+  bmiText.textContent='Please correct the highlighted fields to calculate BMI.';
+}
+
+function calcBMI(){
+  if(!validateAll()){
+    showNeedsAttention();
+    return;
+  }
+
+  const w=parseFloat(document.getElementById('weight').value);
+  const hcm=parseFloat(document.getElementById('height').value);
+  const activity=parseFloat(document.getElementById('activity').value||1);
+  const hm=hcm/100;
+  const bmi=w/(hm*hm);
+  const low=18.5*hm*hm;
+  const high=24.9*hm*hm;
+  const water=(w*35*activity)/1000;
+  let label='Healthy';
+  let text='Your BMI is in the healthy range. Keep a steady routine with balanced meals, regular movement, and good hydration.';
+  let icon='fa-circle-check';
+  if(bmi<18.5){label='Underweight';text='Your BMI is below the healthy range. A clinician can help you review nutrition, energy levels, and any recent weight change.';icon='fa-arrow-down';}
+  else if(bmi<25){label='Healthy';}
+  else if(bmi<30){label='Overweight';text='Your BMI is above the healthy range. Small changes in meals, sleep, and movement can help improve long-term health.';icon='fa-arrow-up';}
+  else {label='Higher BMI';text='Your BMI is in a higher range. It may be helpful to book a consultation for tailored medical advice and a proper health review.';icon='fa-heart-pulse';}
+  bmiValue.textContent=bmi.toFixed(1);
+  bmiBadge.innerHTML=`<i class="fas ${icon}"></i> ${label}`;
+  bmiText.textContent=text;
+  healthyRange.textContent=`${low.toFixed(1)} – ${high.toFixed(1)} kg`;
+  waterTarget.textContent=`${water.toFixed(1)} L / day`;
+  heightEcho.textContent=`${hcm.toFixed(0)} cm`;
+  const left=Math.min(100,Math.max(0,(bmi/40)*100));
+  bmiMarker.style.left=left+'%';
+}
+
+document.getElementById('calcBtn').addEventListener('click',calcBMI);
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  document.getElementById('weight').value=62;
+  document.getElementById('height').value=170;
+  document.getElementById('age').value=24;
+  document.getElementById('activity').value=1;
+  ['weight','height','age'].forEach(id=>setFieldState(id,''));
+  calcBMI();
+});
+['weight','height','age'].forEach(id=>{
+  const input=document.getElementById(id);
+  input.addEventListener('input',()=>{
+    validateField(id);
+    calcBMI();
+  });
+  input.addEventListener('blur',()=>validateField(id));
+});
+document.getElementById('activity').addEventListener('input',calcBMI);
+calcBMI();
+
+
+</script>
+</body>
+</html>
